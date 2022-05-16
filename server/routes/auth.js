@@ -2,7 +2,7 @@ const express = require('express')
 const router = express.Router()
 
 
-
+/*
 // Registration Endpoint
 router.post('/register', async (req, res, next) => {
   try {
@@ -36,3 +36,4 @@ router.post(
 )
 
 module.exports = router
+*/

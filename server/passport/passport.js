@@ -1,8 +1,8 @@
-const passport = require('passport');
-const LocalStrategy = require('passport-local');
+//const passport = require('passport');
+//const LocalStrategy = require('passport-local');
 
-const AuthService = require('../services/AuthService');
-const AuthServiceInstance = new AuthService();
+//const AuthService = require('../services/AuthService');
+//const AuthServiceInstance = new AuthService();
 
 
 /**
@@ -15,18 +15,6 @@ module.exports = (app) => {
 
   app.set('trust proxy', 1);
 
-  // Creates a session
-  app.use(
-    session({  
-      secret: SESSION_SECRET,
-      resave: false,
-      saveUninitialized: false,
-      cookie: {
-        secure: false,
-        maxAge: 24 * 60 * 60 * 1000
-      }
-    })
-  );
 
   // Initialize passport
   app.use(passport.initialize());  
