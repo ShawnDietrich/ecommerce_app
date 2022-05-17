@@ -1,13 +1,12 @@
-var express = require('express');
-var router = express.Router();
+const authRouter = require('./auth')
+const cartRouter = require('./cart')
+const productsRouter = require('./products')
+const usersRouter = require('./users')
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
-  res.send("hello world");
-});
-
-router.get('/', (req,res, next) => {
-  res.send("something")
-})
-
-module.exports = router;
+module.exports = (app, passport) => {
+  //map routes to routers
+  authRouter(app, passport)
+  cartRouter(app)
+  productsRouter(app)
+  usersRouter(app)
+}

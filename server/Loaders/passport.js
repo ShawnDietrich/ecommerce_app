@@ -1,20 +1,15 @@
-//const passport = require('passport');
-//const LocalStrategy = require('passport-local');
+const passport = require('passport');
+const LocalStrategy = require('passport-local');
 
-//const AuthService = require('../services/AuthService');
-//const AuthServiceInstance = new AuthService();
+const AuthService = require('../services/AuthService');
+const AuthServiceInstance = new AuthService();
 
 
 /**
- * May need to move this into the app.js file
  * @param {*} app 
  * @returns 
  */
 module.exports = (app) => {
-
-
-  app.set('trust proxy', 1);
-
 
   // Initialize passport
   app.use(passport.initialize());  

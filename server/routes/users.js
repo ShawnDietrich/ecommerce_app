@@ -1,9 +1,25 @@
-var express = require('express');
-var router = express.Router();
+var express = require('express')
+var router = express.Router()
 
-/* GET users listing. */
-router.get('/', function(req, res, next) {
-  res.send('respond with a resource');
-});
+module.exports = (app) => {
+  app.use('/users', router)
 
-module.exports = router;
+  //get user information
+  router.get('/:userId', async (req, res, next) => {
+    try {
+      const { id } = req.params
+      const response = "" //get user by id from database
+      res.status(200).send(response)
+    } catch (err) {
+      next(err)
+    }
+  })
+
+  //update user information
+  router.put('/:userId', async (req, res, next) => {
+    const {id} = req.params
+    const data = req.body
+    const response =""//update user data by id
+    res.status(200).send(response)
+  })
+}

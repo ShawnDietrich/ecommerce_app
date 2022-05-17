@@ -1,15 +1,21 @@
-//mapping routers
-const indexRouter = require("../routes/index");
-const usersRouter = require("../routes/users");
-const productsRouter = require("../routes/products");
-const cartRouter = require("../routes/cart");
-//const authRouter = require("../routes/auth");
+const expressLoader = require('./express')
+const passportLoader = require('./passport')
+const routeLoader = require('../routes')
 
 module.exports = async (app) => {
-  //setup routers
-  app.use("/", indexRouter);
-  app.use("/users", usersRouter);
-  app.use("/products", productsRouter);
-  app.use("/cart", cartRouter);
-  //app.use("auth", authRouter);
-};
+  //Load middleware for express app
+  const expressApp = await expressLoader(app)
+
+  //Load passport middleware
+  const passport = await passportLoader(expressApp)
+
+  //Load API routes
+  await routeLoader(app, passport)
+
+  //Error Handler
+  app.use((err, req, res, next) => {
+    const { message, status } = err
+
+    return res.status(status).send({ message })
+  })
+}
