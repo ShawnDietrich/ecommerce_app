@@ -14,8 +14,8 @@ module.exports = (app) => {
   //get user information
   router.get('/:userId', async (req, res, next) => {
     try {
-      const { id } = req.params
-      const response = userService.get(id) //get user by id from database
+      const {userId} = req.params
+      const response = await userService.get(userId) //get user by id from database
       res.status(200).send(response)
     } catch (err) {
       next(err)
@@ -24,10 +24,10 @@ module.exports = (app) => {
 
   //update user information
   router.put('/:userId', async (req, res, next) => {
-    const { id } = req.params
+    const { userId } = req.params
     const data = req.body
     try {
-      const response = await userService.update({ id: id, ...data })
+      const response = await userService.update({ id: userId, ...data })
       res.status(200).send(response)
     } catch (err) {
       next(err)

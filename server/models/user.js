@@ -54,17 +54,17 @@ module.exports = class UserModel {
     }
   }
 
-  async findById(id) {
+  async findById(userid) {
     try {
       const query = 'SELECT * FROM users WHERE id = $1'
-      const id = [id]
-      const result = await db.query(query, values)
+      const id = [userid]
+      const result = await db.query(query, id)
       if (result) {
         return result.rows[0]
       }
       return null
     }catch (err) {
-      
+
     }
   }
 }
