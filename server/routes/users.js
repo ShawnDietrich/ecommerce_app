@@ -1,14 +1,21 @@
 var express = require('express')
 var router = express.Router()
+const UserService = require('../services/userService')
+const userService = new UserService()
 
 module.exports = (app) => {
   app.use('/users', router)
+
+  //default route
+  router.get('/', (req, res, next) => {
+    res.status(204).send('Missing User ID')
+  })
 
   //get user information
   router.get('/:userId', async (req, res, next) => {
     try {
       const { id } = req.params
-      const response = "" //get user by id from database
+      const response = userService.get(id) //get user by id from database
       res.status(200).send(response)
     } catch (err) {
       next(err)
@@ -17,9 +24,13 @@ module.exports = (app) => {
 
   //update user information
   router.put('/:userId', async (req, res, next) => {
-    const {id} = req.params
+    const { id } = req.params
     const data = req.body
-    const response =""//update user data by id
-    res.status(200).send(response)
+    try {
+      const response = await userService.update({ id: id, ...data })
+      res.status(200).send(response)
+    } catch (err) {
+      next(err)
+    }
   })
 }

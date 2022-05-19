@@ -9,7 +9,7 @@ module.exports = (app) => {
   router.get('/', async (req, res, next) => {
     try {
       const response = ""//get result from database
- 
+      console.log("get products")
       res.status(200).send(response)
     } catch (err) {
       next(err)

@@ -4,18 +4,18 @@ const loaders = require('./loaders')
 const http = require('http')
 
 //get port from .env file
-require('dotenv').config()
+require('dotenv').config();
 const PORT  = process.env.PORT
 
 //setup server and call loaders to link routes
 async function startServer() {
   //Call loaders
   loaders(app)
-
+  //console.log(require('dotenv').config())
   /**
    * Get port from environment and store in Express.
    */
-  var port = normalizePort(PORT || '3000')
+  var port = normalizePort(PORT )
   app.set('port', port)
 
   /**

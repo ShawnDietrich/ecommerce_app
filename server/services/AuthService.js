@@ -10,8 +10,8 @@ module.exports = class AuthService {
 
     try {
       // Check if user already exists
-      const user = await UserModelInstance.findOneByEmail(email);
-
+      const user = await UserModelInstance.findByEmail(email);
+      console.log("finished search")
       // If user already exists, reject
       if (user) {
         throw createError(409, 'Email already in use');
