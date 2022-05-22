@@ -32,7 +32,7 @@ module.exports = class AuthService {
 
     try {
       // Check if user exists
-      const user = await UserModelInstance.findOneByEmail(email);
+      const user = await UserModelInstance.findByEmail(email);
 
       // If no user found, reject
       if (!user) {

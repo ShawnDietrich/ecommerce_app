@@ -1,5 +1,7 @@
 var express = require('express')
 var router = express.Router()
+const productService = require('../services/productsservice')
+const prodServiceInstance = new productService()
 
 module.exports = (app) => {
   //map route to router
@@ -8,7 +10,8 @@ module.exports = (app) => {
   //Get all products from database
   router.get('/', async (req, res, next) => {
     try {
-      const response = ""//get result from database
+      console.log('Getting all products')
+      const response = await prodServiceInstance.get()
       console.log("get products")
       res.status(200).send(response)
     } catch (err) {
@@ -16,25 +19,41 @@ module.exports = (app) => {
     }
   })
 
-  //remove product from database
+  /*remove product from database
   router.delete('/:id', async (res, req, next) => {
     try {
       const { id } = req.params
-      const response = ""//remove from database call
+      const response = 
     
       res.status(200).send('product Removed')
     } catch (err) {
       next(err)
     }
   })
+  */
 
-  //Update product from database
+  //add product to database
   router.post('/', async (req, res, next) => {
     try {
       //gather infor about product
-      const { product } = req.body
-      const response = ""//send product info to database
-      res.status(201).send('product added')
+      console.log("Recived product.  Calling service")
+      const product = req.body
+      
+      const response = await prodServiceInstance.add(product)
+      res.status(201).send(response)
+    } catch (err) {
+      next(err)
+    }
+  })
+
+  //update product in database
+  router.put('/:prodId', async (req, res, next) => {
+    try {
+      //gather infor about product
+      const {prodId} = req.params
+      const product = req.body
+      const response = await prodServiceInstance.update({id: prodId, ...product})
+      res.status(201).send(response)
     } catch (err) {
       next(err)
     }
