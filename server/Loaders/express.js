@@ -1,6 +1,7 @@
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const session = require('express-session')
+require('dotenv').config()
 const SESSION_SECRET = process.env.SESSION_SECRET
 
 module.exports = (app) => {
