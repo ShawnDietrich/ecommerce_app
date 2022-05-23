@@ -1,27 +1,28 @@
 import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
-import { loadCart } from '../../api/state'
-import Cards from '../Components/cards/cards'
-import { CardGroup, Row } from 'react-bootstrap'
+import './cart.css'
 
-const Cart = () => {
-  //define state
-  const { cart } = useSelector((state) => state.userState)
-  const dispatch = useDispatch()
+const Cart = (props) => {
+  //load items from session storage
+  const cart = JSON.parse(sessionStorage.getItem('cartData'))
 
   useEffect(() => {
-    dispatch(loadCart())
+    props.onLoad(cart)
   }, [])
-
+  //present cart items in a list
+  const listCart = cart.map((item, index) => (
+    <li key={index}>{item.name} {item.price}</li>
+  ))
   if (cart) {
     return (
-      <CardGroup>
-        <Row xs={1} md={2} className="g-4">
-          {cart.map((item, index) => (
-            <Cards className={item.prodName} key={index} product={item} />
-          ))}
-        </Row>
-      </CardGroup>
+      <>
+        <div className="cartObjects">
+            <h2>Cart Contents</h2>
+            <ul className='items'>
+               {listCart}
+            </ul>
+           
+        </div>
+      </>
     )
   } else {
     return <h1>No Products Added</h1>
