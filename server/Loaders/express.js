@@ -1,4 +1,4 @@
-const bodyParser = require('body-parser')
+const express = require('express')
 const cors = require('cors')
 const session = require('express-session')
 require('dotenv').config()
@@ -7,8 +7,8 @@ const SESSION_SECRET = process.env.SESSION_SECRET
 module.exports = (app) => {
   //setup middlewares
   app.use(cors())
-  app.use(bodyParser.json())
-  app.use(bodyParser.urlencoded({ extended: true }))
+  app.use(express.json())
+  app.use(express.urlencoded({ extended: true }))
   app.set('trust proxy', 1)
 
   //create session

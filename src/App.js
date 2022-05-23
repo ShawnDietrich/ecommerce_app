@@ -1,20 +1,48 @@
-import logo from './logo.svg'
 import './App.css'
+import { useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import NavHeader from './Pages/Components/nav/nav'
 import Header from './Pages/Components/header/header'
 import Products from './Pages/products/products'
-import { useReducer } from 'react'
-import UserStateContext, { initialState, stateReducer } from './api/state'
 import Cart from './Pages/cart/cart'
+import { useDispatch, useSelector } from 'react-redux'
+import ProductServices from './api/products'
+import { loadCart, loadProducts } from './api/state'
+
 function App() {
+   //setup reducer and state
+   const {products, cart} = useSelector((state) => state.userState)
+   const dispatch = useDispatch()
+   const ProdServInst = new ProductServices()
+ 
+   //effect to load in all products from database
+   useEffect(() => {
+     async function fetchProducts() {
+       //console.log('getting products')
+       const response = await ProdServInst.getAllProducts()
+       //console.log(response)
+       dispatch(loadProducts(response))
+     }
+     fetchProducts()
+   }, [])
+
+   const handleAddToCart = async (item) => {
+      //add item to cart state
+      await dispatch(loadCart(item))
+      sessionStorage.setItem("cartData", JSON.stringify(cart))
+   }
+
+   const loadCartData = (data) => [
+     dispatch(loadCart(data))
+   ]
+
   return (
     <Router>
       <NavHeader />
       <Routes>
-        <Route path="/home" element={<Header />} />
-        <Route path="/products" element={<Products />} />
-        <Route path="/checkout" element={<Cart />} />
+        <Route path='/' element={<Header />}/>
+        <Route path="/products" element={<Products products={products} onClick = {handleAddToCart}/>} />
+        <Route path="/checkout" element={<Cart onLoad={loadCartData}/>} />
       </Routes>
     </Router>
   )

@@ -19,7 +19,7 @@ const NavHeader = () => {
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="/home">Home</Nav.Link>
+            <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/products">Products</Nav.Link>
             <Nav.Link href='/checkout'>Checkout</Nav.Link>
             <Nav.Link href="/login">Login</Nav.Link>

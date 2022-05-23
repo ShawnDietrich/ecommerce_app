@@ -11,7 +11,7 @@ module.exports = class ProductService {
   async get() {
     try {
       //get all products
-      console.log('running service')
+      //console.log('running service')
       const products = await productModelInstance.getAllProducts()
       return products
     } catch (err) {

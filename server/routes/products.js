@@ -12,7 +12,7 @@ module.exports = (app) => {
     try {
       console.log('Getting all products')
       const response = await prodServiceInstance.get()
-      console.log("get products")
+      //console.log(response)
       res.status(200).send(response)
     } catch (err) {
       next(err)

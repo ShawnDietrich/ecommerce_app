@@ -14,9 +14,9 @@ module.exports = class ProductModel {
       const query = 'SELECT * FROM products'
       //query database
       const result = await db.query(query)
-
+      //console.log(result.rows)
       //Check result
-      if (result) return result.rows[0]
+      if (result) return result.rows
       return null
     } catch (err) {
       console.log(`Error ${err}`)

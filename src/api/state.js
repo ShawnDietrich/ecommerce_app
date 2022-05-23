@@ -8,13 +8,16 @@ const userState = createSlice({
   initialState: {
     products: [],
     cart: [],
+    username: '',
+    password: '',
+    cookie: ""
   },
   reducers: {
     loadProducts(state, action) {
       state.products = action.payload
     },
     loadCart(state, action) {
-        state.cart = action.payload
+        state.cart.push(action.payload)
     },
     removeItem(state, action) {
       state.cart.filter((item) => item.id !== action.payload.id)
