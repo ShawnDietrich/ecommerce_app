@@ -1,6 +1,6 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit'
 import React from 'react'
-import { cartArray } from '../Pages/products/tempDB'
+
 
 //Create state and intilize
 const userState = createSlice({
