@@ -8,6 +8,7 @@ import Cart from './Pages/cart/cart'
 import { useDispatch, useSelector } from 'react-redux'
 import ProductServices from './api/products'
 import { loadCart, loadProducts } from './api/state'
+import AddProduct from './Pages/addProduct/addProduct'
 
 function App() {
    //setup reducer and state
@@ -43,6 +44,7 @@ function App() {
         <Route path='/' element={<Header />}/>
         <Route path="/products" element={<Products products={products} onClick = {handleAddToCart}/>} />
         <Route path="/checkout" element={<Cart onLoad={loadCartData}/>} />
+        <Route path="/addprod" element={<AddProduct/>}/>
       </Routes>
     </Router>
   )
