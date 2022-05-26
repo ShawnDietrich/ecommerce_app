@@ -18,14 +18,14 @@ function App() {
  
    //effect to load in all products from database
    useEffect(() => {
-     async function fetchProducts() {
-       //console.log('getting products')
-       const response = await ProdServInst.getAllProducts()
-       //console.log(response)
-       dispatch(loadProducts(response))
-     }
-     fetchProducts()
-   }, [])
+    async function fetchProducts() {
+      //console.log('getting products')
+      const response = await ProdServInst.getAllProducts()
+      //console.log(response)
+      dispatch(loadProducts(response))
+    }
+    fetchProducts()
+  }, [])
 
    const handleAddToCart = async (item) => {
       //add item to cart state
