@@ -23,7 +23,7 @@ const NavHeader = () => {
             <Nav.Link href="/products">Products</Nav.Link>
             <Nav.Link href='/checkout'>Checkout</Nav.Link>
             <Nav.Link href="/login">Login</Nav.Link>
-            <Nav.Link href='/addprod'>Add Product</Nav.Link>
+            <Nav.Link href="/addprod">Add Product</Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

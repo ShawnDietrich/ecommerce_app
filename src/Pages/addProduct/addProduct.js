@@ -5,41 +5,34 @@ import FormControl from 'react-bootstrap/FormControl'
 import Button from 'react-bootstrap/Button'
 import './addProduct.css'
 import ProductServices from '../../api/products'
-
-
-//cloudinary information
-const cloudName = process.env.REACT_APP_CLOUDNAME
-const api_key = process.env.REACT_APP_APIKEY
-const api_secret = process.env.REACT_APP_API_SECRET
+import CloudinaryUploadWidget from './cloudinary'
 
 //create an instance of the product api class
 const ProdServInst = new ProductServices()
 
 const AddProduct = (props) => {
+  //Form data to send to api
+  const data = {
+    name: '',
+    description: '',
+    price: 0,
+    picLocation: '',
+  }
+  //format data for api
+  const formatData = (formData) => {}
 
-    //Form data to send to api
-    const data = {
-        name: '',
-        description: '',
-        price: 0,
-        picLocation: ''
-    }
-    //format data for api
-    const formatData = (formData) => {
-        
-    }
+  //send picture to cloudinary
+  const storePic = (url) => {
+    //data.picLocation = url
+    console.log(url)
+  }
 
-    //send picture to cloudinary
-    const storePic = async () => {
-        
-    }
-
-    //collect data and send to database / cloud storage
-    const handleSubmit = async (e) => {
-        console.log(e)
-        const response = await ProdServInst.addProduct(e.target)
-        console.log(response)
-    }
+  //collect data and send to database / cloud storage
+  const handleSubmit = async (e) => {
+    console.log(e)
+    const response = await ProdServInst.addProduct(e.target)
+    console.log(response)
+  }
   return (
     <>
       <div className="productForm">
@@ -67,8 +60,9 @@ const AddProduct = (props) => {
             <Form.Label>Select Image</Form.Label>
             <Form.Control type="file" size="sm" />
           </Form.Group>
-
-          <Button variant="primary"  onClick={handleSubmit}>
+          <CloudinaryUploadWidget />
+          
+          <Button variant="primary" onClick={handleSubmit}>
             Submit
           </Button>
         </Form>
