@@ -60,12 +60,13 @@ const AddProduct = (props) => {
             <Form.Label>Select Image</Form.Label>
             <Form.Control type="file" size="sm" />
           </Form.Group>
+          </Form>
           <CloudinaryUploadWidget />
-          
           <Button variant="primary" onClick={handleSubmit}>
             Submit
           </Button>
-        </Form>
+        
+        
       </div>
     </>
   )

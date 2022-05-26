@@ -1,43 +1,34 @@
-import React, { Component } from 'react'
-const cloudName = process.env.REACT_APP_CLOUDNAME
-const uploadPreset = process.env.REACT_APP_UPLOADPRESET
+import React, { Component } from "react";
 
 class CloudinaryUploadWidget extends Component {
-    
   componentDidMount() {
     var myWidget = window.cloudinary.createUploadWidget(
-        
       {
-        cloudName: cloudName,
-        uploadPreset: uploadPreset,
+        cloudName: "drig2qdcm",
+        uploadPreset: "eatqseft"
       },
       (error, result) => {
-        if (!error && result && result.event === 'success') {
-          console.log('Done! Here is the image info: ', result.info)
-          //this.props.storePic(result.info)
+        if (!error && result && result.event === "success") {
+          console.log("Done! Here is the image info: ", result.info);
         }
-        
-          sessionStorage.setItem("cloud Error", error)
-       
-      },
-    )
-    document.getElementById('upload_widget').addEventListener(
-      'click',
+      }
+    );
+    document.getElementById("upload_widget").addEventListener(
+      "click",
       function () {
-        
-        myWidget.open()
+        myWidget.open();
       },
-      false,
-    )
+      false
+    );
   }
 
   render() {
     return (
       <button id="upload_widget" className="cloudinary-button">
-        Upload Images
+        Upload
       </button>
-    )
+    );
   }
 }
 
-export default CloudinaryUploadWidget
+export default CloudinaryUploadWidget;
