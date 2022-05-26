@@ -1,9 +1,6 @@
-import React, { useEffect } from 'react'
+
 import { CardGroup, Row } from 'react-bootstrap'
-import { useSelector, useDispatch } from 'react-redux'
-import { loadProducts } from '../../api/state'
 import Cards from '../Components/cards/cards'
-import ProductServices from '../../api/products'
 import './products.css'
 
 const Products = (props) => {

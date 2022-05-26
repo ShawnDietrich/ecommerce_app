@@ -4,5 +4,12 @@
 }
 .cloudinary-button {
     width: 100%;
+    
     margin: 2em auto;
+    border: 2px;
+}
+.submitButton {
+    width: 100%;
+    border: 20px;
+    margin: 1em auto;
 }

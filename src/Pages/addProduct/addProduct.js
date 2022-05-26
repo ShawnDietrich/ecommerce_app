@@ -1,42 +1,48 @@
-import React from 'react'
-import Form from 'react-bootstrap/Form'
-import InputGroup from 'react-bootstrap/InputGroup'
-import FormControl from 'react-bootstrap/FormControl'
-import Button from 'react-bootstrap/Button'
-import './addProduct.css'
-import ProductServices from '../../api/products'
-import CloudinaryUploadWidget from './cloudinary'
+import React from "react";
+import Form from "react-bootstrap/Form";
+import InputGroup from "react-bootstrap/InputGroup";
+import FormControl from "react-bootstrap/FormControl";
+import Button from "react-bootstrap/Button";
+import "./addProduct.css";
+import ProductServices from "../../api/products";
+import CloudinaryUploadWidget from "./cloudinary";
 
 //create an instance of the product api class
-const ProdServInst = new ProductServices()
+const ProdServInst = new ProductServices();
 
 const AddProduct = (props) => {
   //Form data to send to api
   const data = {
-    name: '',
-    description: '',
+    name: "",
+    description: "",
     price: 0,
-    picLocation: '',
-  }
+    picLocation: "",
+  };
   //format data for api
-  const formatData = (formData) => {}
+  const formatData = (e) => {
+    data.name = e.target.form[0].value
+    data.description = e.target.form[1].value
+    data.price = Number(e.target.value)
+    console.log(data)
+  };
 
   //send picture to cloudinary
-  const storePic = (url) => {
-    //data.picLocation = url
-    console.log(url)
-  }
+  const handleStorePic = (url) => {
+    data.picLocation = url
+    console.log(data);
+  };
 
   //collect data and send to database / cloud storage
   const handleSubmit = async (e) => {
-    console.log(e)
-    const response = await ProdServInst.addProduct(e.target)
-    console.log(response)
-  }
+    console.log(e);
+    const response = await ProdServInst.addProduct(e.target);
+    console.log(response);
+  };
   return (
     <>
       <div className="productForm">
-        <Form>
+        <CloudinaryUploadWidget storePic={handleStorePic} />
+        <Form onChange={formatData}>
           <Form.Group className="mb-3" controlId="formBasicText">
             <Form.Label>Product Title</Form.Label>
             <Form.Control type="name" placeholder="Name of Item" />
@@ -55,21 +61,17 @@ const AddProduct = (props) => {
             <FormControl aria-label="Product Price" />
             <InputGroup.Text>.00</InputGroup.Text>
           </InputGroup>
-
-          <Form.Group controlId="formFileSm" className="mb-3">
-            <Form.Label>Select Image</Form.Label>
-            <Form.Control type="file" size="sm" />
-          </Form.Group>
-          </Form>
-          <CloudinaryUploadWidget />
-          <Button variant="primary" onClick={handleSubmit}>
+          <Button
+            variant="primary"
+            onClick={handleSubmit}
+            className="submitButton"
+          >
             Submit
           </Button>
-        
-        
+        </Form>
       </div>
     </>
-  )
-}
+  );
+};
 
-export default AddProduct
+export default AddProduct;

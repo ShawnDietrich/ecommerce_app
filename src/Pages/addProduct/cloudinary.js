@@ -1,15 +1,19 @@
 import React, { Component } from "react";
 
 class CloudinaryUploadWidget extends Component {
+  constructor(props) {
+    super(props);
+  }
   componentDidMount() {
     var myWidget = window.cloudinary.createUploadWidget(
       {
         cloudName: "drig2qdcm",
-        uploadPreset: "eatqseft"
+        uploadPreset: "v3yvbipy",
       },
       (error, result) => {
         if (!error && result && result.event === "success") {
           console.log("Done! Here is the image info: ", result.info);
+          this.props.storePic(result.info.secure_url);
         }
       }
     );
@@ -25,7 +29,7 @@ class CloudinaryUploadWidget extends Component {
   render() {
     return (
       <button id="upload_widget" className="cloudinary-button">
-        Upload
+        Upload Image
       </button>
     );
   }
