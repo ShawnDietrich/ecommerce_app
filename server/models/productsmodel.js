@@ -43,6 +43,7 @@ module.exports = class ProductModel {
     try {
       //setup query
       console.log('adding product to database')
+      console.log(data)
       const query = pgp.helpers.insert(data, null, table) + 'RETURNING *'
       //query database
       const result = await db.query(query)
@@ -50,6 +51,7 @@ module.exports = class ProductModel {
       return null
     } catch (err) {
       console.log('error occured')
+      console.log(err)
       throw err
     }
   }

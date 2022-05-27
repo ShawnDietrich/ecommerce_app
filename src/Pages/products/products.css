@@ -1,6 +1,7 @@
 
 
 .products {
-    width: 50%;
+    width: 50em;
     margin: 2em auto;
+    text-align: center;
 }

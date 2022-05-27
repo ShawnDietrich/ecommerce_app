@@ -8,6 +8,12 @@ const userState = createSlice({
   initialState: {
     products: [],
     cart: [],
+    newProduct: {
+      name: '',
+      description: '',
+      price: 0,
+      picLocation: '',
+    },
     username: '',
     password: '',
     cookie: ""
@@ -25,6 +31,17 @@ const userState = createSlice({
     clearCart(state, action) {
       state.cart = []
     },
+    newProductLoad(state, action) {
+      state.newProduct.name = action.payload.name
+      state.newProduct.description = action.payload.description
+      state.newProduct.price = action.payload.price
+    },
+    addProductURL(state, action) {
+      state.newProduct.picLocation = action.payload
+    },
+    clearNewProduct(state, action){
+      state.newProduct = {}
+    }
   },
 })
 
@@ -41,4 +58,7 @@ export const {
   loadCart,
   removeItem,
   clearCart,
+  newProductLoad,
+  addProductURL,
+  clearNewProduct
 } = userState.actions

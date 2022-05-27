@@ -4,12 +4,12 @@ import Button from 'react-bootstrap/Button'
 import Card from 'react-bootstrap/Card'
 
 const Cards = (props) => {
-  const { id, name, description, price } = props.product
+  const { id, name, description, price, picLocation } = props.product
   return (
     
       <Col>
         <Card border="dark" style={{ width: '18rem' }}>
-          <Card.Img variant="top" src="holder.js/100px180" />
+          <Card.Img variant="top" src={picLocation} />
           <Card.Body>
             
             <Card.Title>{name}</Card.Title>

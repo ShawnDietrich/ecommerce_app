@@ -1,43 +1,62 @@
-import React from "react";
-import Form from "react-bootstrap/Form";
-import InputGroup from "react-bootstrap/InputGroup";
-import FormControl from "react-bootstrap/FormControl";
-import Button from "react-bootstrap/Button";
-import "./addProduct.css";
-import ProductServices from "../../api/products";
-import CloudinaryUploadWidget from "./cloudinary";
+import React, { useEffect, useState } from 'react'
+import Form from 'react-bootstrap/Form'
+import InputGroup from 'react-bootstrap/InputGroup'
+import FormControl from 'react-bootstrap/FormControl'
+import Button from 'react-bootstrap/Button'
+import './addProduct.css'
+import ProductServices from '../../api/products'
+import CloudinaryUploadWidget from './cloudinary'
+import { useDispatch, useSelector } from 'react-redux'
+import { addProductURL, clearNewProduct, newProductLoad } from '../../api/state'
 
 //create an instance of the product api class
-const ProdServInst = new ProductServices();
+const ProdServInst = new ProductServices()
 
 const AddProduct = (props) => {
   //Form data to send to api
-  const data = {
-    name: "",
-    description: "",
-    price: 0,
-    picLocation: "",
-  };
+  const { newProduct } = useSelector((state) => state.userState)
+  const [refresh, setRefresh] = useState(true)
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    const updateState = () => {
+      if (newProduct === null) {
+        let product = JSON.parse(sessionStorage.getItem('NewProduct'))
+        dispatch(newProductLoad(product))
+      }
+    }
+    updateState()
+  }, [])
+
+  useEffect(() => {
+    
+      sessionStorage.setItem('NewProduct', JSON.stringify(newProduct))
+      
+  })
   //format data for api
   const formatData = (e) => {
-    data.name = e.target.form[0].value
-    data.description = e.target.form[1].value
-    data.price = Number(e.target.value)
-    console.log(data)
-  };
+    dispatch(
+      newProductLoad({
+        name: e.target.form[0].value,
+        description: e.target.form[1].value,
+        price: Number(e.target.value),
+      }),
+    )
+  }
+
 
   //send picture to cloudinary
   const handleStorePic = (url) => {
-    data.picLocation = url
-    console.log(data);
-  };
+     dispatch(addProductURL(url))
+    //console.log(data);
+  }
 
   //collect data and send to database / cloud storage
   const handleSubmit = async (e) => {
-    console.log(e);
-    const response = await ProdServInst.addProduct(e.target);
-    console.log(response);
-  };
+    await ProdServInst.addProduct(newProduct)
+    dispatch(clearNewProduct())
+    e.target.form.refresh()
+  }
   return (
     <>
       <div className="productForm">
@@ -69,9 +88,10 @@ const AddProduct = (props) => {
             Submit
           </Button>
         </Form>
+        <img src={newProduct.picLocation} className="picPrev"/>
       </div>
     </>
-  );
-};
+  )
+}
 
-export default AddProduct;
+export default AddProduct

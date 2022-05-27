@@ -1,4 +1,6 @@
 import React, { Component } from "react";
+const cloudName = process.env.REACT_APP_CLOUDNAME;
+const uploadPreset = process.env.REACT_APP_UPLOADPRESET;
 
 class CloudinaryUploadWidget extends Component {
   constructor(props) {
@@ -7,8 +9,8 @@ class CloudinaryUploadWidget extends Component {
   componentDidMount() {
     var myWidget = window.cloudinary.createUploadWidget(
       {
-        cloudName: "drig2qdcm",
-        uploadPreset: "v3yvbipy",
+        cloudName: cloudName,
+        uploadPreset: uploadPreset,
       },
       (error, result) => {
         if (!error && result && result.event === "success") {
