@@ -6,15 +6,16 @@ import Header from './Pages/Components/header/header'
 import Products from './Pages/products/products'
 import Cart from './Pages/cart/cart'
 import { useDispatch, useSelector } from 'react-redux'
-import ProductServices from './api/products'
+import Services from './api/apiCalls'
 import { loadCart, loadProducts } from './api/state'
 import AddProduct from './Pages/addProduct/addProduct'
+import Login from './Pages/login/login'
 
 function App() {
    //setup reducer and state
    const {products, cart} = useSelector((state) => state.userState)
    const dispatch = useDispatch()
-   const ProdServInst = new ProductServices()
+   const ProdServInst = new Services()
  
    //effect to load in all products from database
    useEffect(() => {
@@ -45,6 +46,7 @@ function App() {
         <Route path="/products" element={<Products products={products} onClick = {handleAddToCart}/>} />
         <Route path="/checkout" element={<Cart onLoad={loadCartData}/>} />
         <Route path="/addprod" element={<AddProduct/>}/>
+        <Route path="/login" element={<Login/>}/>
       </Routes>
     </Router>
   )

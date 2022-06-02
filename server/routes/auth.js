@@ -26,13 +26,13 @@ module.exports = (app, passport) => {
     async (req, res, next) => {
       try {
         const { username, password } = req.body
-
+        console.log(`Loging in user ${username}`)
         const response = await AuthServiceInstance.login({
           email: username,
           password,
         })
-
-        res.status(200).send(response)
+        const {id, email} = response
+        res.status(200).send({id, email})
       } catch (err) {
         next(err)
       }

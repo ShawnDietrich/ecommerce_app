@@ -10,7 +10,7 @@ module.exports = (app) => {
   //Get all products from database
   router.get('/', async (req, res, next) => {
     try {
-      console.log('Getting all products')
+      //console.log('Getting all products')
       const response = await prodServiceInstance.get()
       //console.log(response)
       res.status(200).send(response)

@@ -1,11 +1,19 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { Container, NavDropdown } from 'react-bootstrap'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import navIcon from '../../../images/menu.png' //<a href="https://www.flaticon.com/free-icons/menu" title="menu icons">Menu icons created by Pixel perfect - Flaticon</a>
 import icon from '../../../images/bowl.png' //<a href="https://www.flaticon.com/free-icons/clay" title="clay icons">Clay icons created by Eucalyp - Flaticon</a>
-
+ let addProdvis = false
 const NavHeader = () => {
+ 
+  useEffect(() => {
+    const userEmail = sessionStorage.getItem("userEmail")
+    if(userEmail !== null){
+      addProdvis = true
+    }
+    
+  })
   return (
     <Navbar bg="dark" variant='dark' expand="lg" sticky='top'>
       <Container fluid> 
@@ -23,7 +31,10 @@ const NavHeader = () => {
             <Nav.Link href="/products">Products</Nav.Link>
             <Nav.Link href='/checkout'>Checkout</Nav.Link>
             <Nav.Link href="/login">Login</Nav.Link>
-            <Nav.Link href="/addprod">Add Product</Nav.Link>
+            {addProdvis &&
+            <Nav.Link href="/addprod" >Add Product</Nav.Link>
+            }
+            
           </Nav>
         </Navbar.Collapse>
       </Container>

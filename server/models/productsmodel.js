@@ -10,7 +10,7 @@ module.exports = class ProductModel {
   async getAllProducts() {
     try {
       //setup query
-      console.log('quering database')
+      //console.log('quering database')
       const query = 'SELECT * FROM products'
       //query database
       const result = await db.query(query)

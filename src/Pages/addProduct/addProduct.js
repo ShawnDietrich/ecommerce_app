@@ -4,13 +4,13 @@ import InputGroup from 'react-bootstrap/InputGroup'
 import FormControl from 'react-bootstrap/FormControl'
 import Button from 'react-bootstrap/Button'
 import './addProduct.css'
-import ProductServices from '../../api/products'
+import Services from '../../api/apiCalls'
 import CloudinaryUploadWidget from './cloudinary'
 import { useDispatch, useSelector } from 'react-redux'
 import { addProductURL, clearNewProduct, newProductLoad } from '../../api/state'
 
 //create an instance of the product api class
-const ProdServInst = new ProductServices()
+const ProdServInst = new Services()
 
 const AddProduct = (props) => {
   //Form data to send to api
@@ -18,21 +18,6 @@ const AddProduct = (props) => {
   const [refresh, setRefresh] = useState(true)
   const dispatch = useDispatch()
 
-  useEffect(() => {
-    const updateState = () => {
-      if (newProduct === null) {
-        let product = JSON.parse(sessionStorage.getItem('NewProduct'))
-        dispatch(newProductLoad(product))
-      }
-    }
-    updateState()
-  }, [])
-
-  useEffect(() => {
-    
-      sessionStorage.setItem('NewProduct', JSON.stringify(newProduct))
-      
-  })
   //format data for api
   const formatData = (e) => {
     dispatch(
