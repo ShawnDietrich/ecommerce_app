@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Form from 'react-bootstrap/Form'
 import InputGroup from 'react-bootstrap/InputGroup'
 import FormControl from 'react-bootstrap/FormControl'
@@ -15,7 +15,6 @@ const ProdServInst = new Services()
 const AddProduct = (props) => {
   //Form data to send to api
   const { newProduct } = useSelector((state) => state.userState)
-  const [refresh, setRefresh] = useState(true)
   const dispatch = useDispatch()
 
   //format data for api
@@ -73,7 +72,7 @@ const AddProduct = (props) => {
             Submit
           </Button>
         </Form>
-        <img src={newProduct.picLocation} className="picPrev"/>
+        <img src={newProduct.picLocation} className="picPrev" alt='Product to add'/>
       </div>
     </>
   )

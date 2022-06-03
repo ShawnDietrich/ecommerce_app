@@ -1,5 +1,5 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit'
-import React from 'react'
+
 
 
 //Create state and intilize
@@ -24,6 +24,9 @@ const userState = createSlice({
     },
     loadCart(state, action) {
         state.cart.push(action.payload)
+    },
+    initCart(state, action){
+      state.cart = action.payload
     },
     removeItem(state, action) {
       state.cart.filter((item) => item.id !== action.payload.id)
@@ -60,5 +63,6 @@ export const {
   clearCart,
   newProductLoad,
   addProductURL,
-  clearNewProduct
+  clearNewProduct,
+  initCart
 } = userState.actions

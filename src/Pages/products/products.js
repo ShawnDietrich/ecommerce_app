@@ -1,4 +1,5 @@
 
+
 import { CardGroup, Row } from 'react-bootstrap'
 import Cards from '../Components/cards/cards'
 import './products.css'
@@ -6,14 +7,17 @@ import './products.css'
 const Products = (props) => {
   const products = props.products
 
+
+
   //event handler for adding products to cart
   const handleAddCart = (e) => {
     e.preventDefault()
     const id = Number(e.target.id)
-    products.map((product) => {
+    products.map(product => {
       if (product.id === id) {
         props.onClick(product)
       }
+      return null
     })
   }
   //Add server call when loaded to populate the cards

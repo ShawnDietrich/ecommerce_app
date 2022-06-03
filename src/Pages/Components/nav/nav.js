@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react'
-import { Container, NavDropdown } from 'react-bootstrap'
+import { Container } from 'react-bootstrap'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
-import navIcon from '../../../images/menu.png' //<a href="https://www.flaticon.com/free-icons/menu" title="menu icons">Menu icons created by Pixel perfect - Flaticon</a>
 import icon from '../../../images/bowl.png' //<a href="https://www.flaticon.com/free-icons/clay" title="clay icons">Clay icons created by Eucalyp - Flaticon</a>
  let addProdvis = false
 const NavHeader = () => {
@@ -22,6 +21,7 @@ const NavHeader = () => {
             width="30"
             height="30"
             className='d-inline-block align-top'
+            alt='Icon'
             />
         </Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
