@@ -1,6 +1,7 @@
 const createError = require('http-errors');
 const UserModel = require('../models/user');
 const UserModelInstance = new UserModel();
+const bcrypt = require('bcryptjs')
 
 module.exports = class AuthService {
 
@@ -29,7 +30,7 @@ module.exports = class AuthService {
   async login(data) {
 
     const { email, password } = data;
-
+    
     try {
       // Check if user exists
       const user = await UserModelInstance.findByEmail(email);
@@ -40,7 +41,8 @@ module.exports = class AuthService {
       }
 
       // Check for matching passwords
-      if (user.password !== password) {
+      const passwordCheck = await bcrypt.compare(password, user.password)      
+      if (!passwordCheck) {
         throw createError(401, 'Incorrect username or password');
       }
 
