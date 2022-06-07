@@ -13,14 +13,36 @@ export default class Services {
   }
 
   addProduct(data) {
-    console.log(data)
     const response = axios.post(baseUrl + '/products', data)
     return response.then((response) => response.data)
   }
 
+
   authUser(data) {
     //console.log(data)
-    const response = axios.post(baseUrl + '/auth/login', data)
+    const response = axios.post(baseUrl + '/auth/login',
+      {
+        username: data.username,
+        password: data.password
+      }
+    )
+    
     return response.then((response) => response.data)
   }
+
+
+  /*
+  async authUser(data) {
+
+    const credentials = btoa(data.username + " : " + data.password)
+    const authHeader = { "Authorization": `Basic ${credentials}` }
+
+    const response = await fetch(baseUrl + '/auth/login', {
+      method: 'POST',
+      headers: new Headers({
+        "Authorization": `Basic ${btoa(`${data.username}:${data.password}`)}`
+      })
+    })
+  }
+  */
 }

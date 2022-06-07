@@ -32,16 +32,17 @@ module.exports = class AuthService {
     const { email, password } = data;
     
     try {
+     
       // Check if user exists
       const user = await UserModelInstance.findByEmail(email);
-
+      
       // If no user found, reject
       if (!user) {
         throw createError(401, 'Incorrect username or password');
       }
 
       // Check for matching passwords
-      const passwordCheck = await bcrypt.compare(password, user.password)      
+      const passwordCheck = await bcrypt.compare(password, user.password)    
       if (!passwordCheck) {
         throw createError(401, 'Incorrect username or password');
       }

@@ -1,5 +1,4 @@
 const express = require('express')
-const passport = require('../loaders/passport')
 const router = express.Router()
 const AuthService = require('../services/AuthService')
 const AuthServiceInstance = new AuthService()
@@ -12,7 +11,7 @@ module.exports = (app, passport) => {
   router.post('/register', async (req, res, next) => {
     try {
       const data = req.body
-      bcrypt.hash(data.password, 17, async(err, hashPassword) => {
+      bcrypt.hash(data.password, 12, async (err, hashPassword) => {
         const response = await AuthServiceInstance.register({
           email: data.username,
           password: hashPassword
@@ -30,15 +29,36 @@ module.exports = (app, passport) => {
     passport.authenticate('local'),
     async (req, res, next) => {
       try {
+
+        //console.log(req.session.passport)
+        //console.log(req.user)
+        /*
         const { username, password } = req.body
-        //console.log(`Loging in user ${username}`)
         const response = await AuthServiceInstance.login({
           email: username,
           password,
         })
-        const {id, email} = response
-        res.status(200).send(response.email)
+        */
+
+        //Time delay to prevent spaming
+        const timeout = (delay = 500) => {
+          return new Promise(res => setTimeout(res, delay))
+        }
+
+        await timeout(3000)
+
+        if(req.isAuthenticated()){
+
+          res.status(200).send({session: req.sessionID})
+        }else {
+          
+          res.status(403).send("Invalid Email or Password")
+        }
+        
+
+
       } catch (err) {
+        console.log(err)
         next(err)
       }
     },

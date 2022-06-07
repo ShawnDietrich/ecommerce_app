@@ -1,5 +1,5 @@
 import { configureStore, createSlice } from '@reduxjs/toolkit'
-
+import noImagePic from '../images/NoImage.png'
 
 
 //Create state and intilize
@@ -12,7 +12,7 @@ const userState = createSlice({
       name: '',
       description: '',
       price: 0,
-      picLocation: '',
+      picLocation: noImagePic,
     },
     username: '',
     password: '',

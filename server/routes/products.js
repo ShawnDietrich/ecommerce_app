@@ -3,16 +3,16 @@ var router = express.Router()
 const productService = require('../services/productsservice')
 const prodServiceInstance = new productService()
 
-module.exports = (app) => {
+module.exports = (app, passport) => {
   //map route to router
   app.use('/products', router)
 
   //Get all products from database
   router.get('/', async (req, res, next) => {
     try {
-      //console.log('Getting all products')
+      //console.log(req.isAuthenticated())
       const response = await prodServiceInstance.get()
-      //console.log(response)
+      //console.log(req.session.passport)
       res.status(200).send(response)
     } catch (err) {
       next(err)
@@ -37,10 +37,18 @@ module.exports = (app) => {
     try {
       //gather infor about product
       console.log("Recived product.  Calling service")
-      const product = req.body
-      
-      const response = await prodServiceInstance.add(product)
+      const {product, user} = req.body
+      console.log(user)
+      console.log(req.sessionID)
+      console.log(req.isAuthenticated())
+      const auth = req.isAuthenticated()
+      if(auth) {
+        const response = await prodServiceInstance.add(product)
       res.status(201).send(response)
+      }else {
+        res.status(401).send("user not authenticated")
+      }
+      
     } catch (err) {
       next(err)
     }

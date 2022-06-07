@@ -7,6 +7,6 @@ module.exports = (app, passport) => {
   //map routes to routers
   authRouter(app, passport)
   cartRouter(app)
-  productsRouter(app)
+  productsRouter(app, passport)
   usersRouter(app)
 }

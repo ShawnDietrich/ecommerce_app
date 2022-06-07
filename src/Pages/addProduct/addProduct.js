@@ -37,9 +37,10 @@ const AddProduct = (props) => {
 
   //collect data and send to database / cloud storage
   const handleSubmit = async (e) => {
-    await ProdServInst.addProduct(newProduct)
+    const userToken = sessionStorage.getItem("user")
+    await ProdServInst.addProduct({newProduct, user: userToken})
     dispatch(clearNewProduct())
-    e.target.form.refresh()
+    
   }
   return (
     <>
@@ -72,7 +73,10 @@ const AddProduct = (props) => {
             Submit
           </Button>
         </Form>
-        <img src={newProduct.picLocation} className="picPrev" alt='Product to add'/>
+        <div className='picPrev'>
+          <img src={newProduct.picLocation} className="picPrev" alt='Product to add'/>
+        </div>
+        
       </div>
     </>
   )

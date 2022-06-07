@@ -23,6 +23,7 @@ function App() {
     if (isNew !== 'true') {
       sessionStorage.setItem('isNew', true)
       sessionStorage.setItem('cartData', JSON.stringify([]))
+      sessionStorage.setItem('session', '')
     }
   }, [])
 
