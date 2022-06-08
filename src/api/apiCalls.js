@@ -13,8 +13,13 @@ export default class Services {
   }
 
   addProduct(data) {
-    const response = axios.post(baseUrl + '/products', data)
-    return response.then((response) => response.data)
+    try {
+      const response = axios.post(baseUrl + '/products', data)
+      return response.then((response) => response.data)
+    } catch (err) {
+      return err
+    }
+
   }
 
 
@@ -26,7 +31,7 @@ export default class Services {
         password: data.password
       }
     )
-    
+
     return response.then((response) => response.data)
   }
 

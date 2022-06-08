@@ -55,4 +55,21 @@ module.exports = class AuthService {
 
   };
 
+  async storeSession(sessionID) {
+    //create timestamp
+    const TimeStamp = new Date()
+    //combine into an object
+    const data = {TimeStamp, sessionID}
+    try {
+      //send session Id and timestamp to database
+      const response = await UserModelInstance.storeSession(data)
+      if (response) {
+        return true
+      }else return false
+    }catch (err) {
+      throw new Error(err)
+    }
+    
+  }
+
 }

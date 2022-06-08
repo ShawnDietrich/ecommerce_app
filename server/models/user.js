@@ -67,4 +67,30 @@ module.exports = class UserModel {
 
     }
   }
+
+  async storeSession(data) {
+    try {
+      const query = pgp.helpers.insert(data, null, 'sessions') + 'RETURNING *'
+      const result = await db.query(query)
+      if(result.rowCount > 0){
+        return result.rows[0]
+      }
+    }catch (err) {
+      throw new Error(err)
+    }
+  }
+
+  async getSession(sessionID) {
+    try {
+      const query = 'SELECT * FROM sessions WHERE "sessionID" = $1'
+      
+      const result = await db.query(query, [sessionID])
+      if (result.rowCount > 0) {
+        return true
+      }else return false
+    }catch (err) {
+      
+      throw new Error(err)
+    }
+  }
 }

@@ -37,8 +37,9 @@ const AddProduct = (props) => {
 
   //collect data and send to database / cloud storage
   const handleSubmit = async (e) => {
-    const userToken = sessionStorage.getItem("user")
-    await ProdServInst.addProduct({newProduct, user: userToken})
+    const userToken = sessionStorage.getItem("session")
+    console.log(userToken)
+    await ProdServInst.addProduct({newProduct, UserToken: userToken})
     dispatch(clearNewProduct())
     
   }

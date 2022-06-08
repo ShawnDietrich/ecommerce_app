@@ -30,16 +30,6 @@ module.exports = (app, passport) => {
     async (req, res, next) => {
       try {
 
-        //console.log(req.session.passport)
-        //console.log(req.user)
-        /*
-        const { username, password } = req.body
-        const response = await AuthServiceInstance.login({
-          email: username,
-          password,
-        })
-        */
-
         //Time delay to prevent spaming
         const timeout = (delay = 500) => {
           return new Promise(res => setTimeout(res, delay))
@@ -48,7 +38,7 @@ module.exports = (app, passport) => {
         await timeout(3000)
 
         if(req.isAuthenticated()){
-
+          const storedRes = await AuthServiceInstance.storeSession(req.sessionID)
           res.status(200).send({session: req.sessionID})
         }else {
           
