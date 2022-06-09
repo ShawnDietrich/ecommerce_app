@@ -31,7 +31,7 @@ module.exports = class ProductModel {
       const query = 'SELECT * FROM products WHERE id = $1'
       const value = [id]
       const response = db.query(query, value)
-      if (response) return (await response).rows[0]
+      if (response) return response.rows[0]
     } catch (err) {
       console.log(err)
       throw new Error(err)

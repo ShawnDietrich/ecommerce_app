@@ -93,4 +93,14 @@ module.exports = class UserModel {
       throw new Error(err)
     }
   }
+
+  async logOutSession(sessionID) {
+    const query = 'DELETE FROM sessions WHERE "sessionID" = $1'
+   try{
+    const result = await db.query(query, [sessionID])
+    return true
+   }catch(err) {
+    throw new Error(err)
+   }
+  }
 }

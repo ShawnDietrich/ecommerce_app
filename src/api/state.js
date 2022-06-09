@@ -14,9 +14,6 @@ const userState = createSlice({
       price: 0,
       picLocation: noImagePic,
     },
-    username: '',
-    password: '',
-    cookie: ""
   },
   reducers: {
     loadProducts(state, action) {

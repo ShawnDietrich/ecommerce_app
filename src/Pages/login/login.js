@@ -25,7 +25,7 @@ const Login = () => {
   //Set logged in status
   useEffect(() => {
     let sessionID = sessionStorage.getItem('session')
-    if (sessionID.length === length) {
+    if (sessionID) {
       setLoggedIn(true)
     } else {
       setLoggedIn(false)

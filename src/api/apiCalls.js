@@ -17,9 +17,19 @@ export default class Services {
       const response = axios.post(baseUrl + '/products', data)
       return response.then((response) => response.data)
     } catch (err) {
-      return err
+      
+      throw err
     }
 
+  }
+
+  updateProduct(data){
+    try{
+      const response = axios.put(baseUrl + '/products', data)
+      return response.then((response) => response.data)
+    }catch (err){
+      throw err
+    }
   }
 
 
@@ -35,19 +45,8 @@ export default class Services {
     return response.then((response) => response.data)
   }
 
-
-  /*
-  async authUser(data) {
-
-    const credentials = btoa(data.username + " : " + data.password)
-    const authHeader = { "Authorization": `Basic ${credentials}` }
-
-    const response = await fetch(baseUrl + '/auth/login', {
-      method: 'POST',
-      headers: new Headers({
-        "Authorization": `Basic ${btoa(`${data.username}:${data.password}`)}`
-      })
-    })
+  logout(sessionID) {
+    const response = axios.post(baseUrl + '/auth/logout', {sessionID})
+    return response.then((response) => response.data)
   }
-  */
 }

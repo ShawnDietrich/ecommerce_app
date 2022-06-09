@@ -53,4 +53,17 @@ module.exports = (app, passport) => {
       }
     },
   )
+
+  //Logout endpoint
+  router.post('/logout', async (req, res) => {
+    try{
+      const sessionID = req.body.sessionID
+      const response = await AuthServiceInstance.storeSession(sessionID)
+      if(response) {
+        res.status(201).send("Session Complete")
+      }
+    }catch(err){
+      res.status(403).send("Failed")
+    }
+  })
 }
