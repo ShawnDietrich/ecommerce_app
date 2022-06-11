@@ -23,7 +23,7 @@ module.exports = class ProductService {
   async add(data) {
     try {
       //add product to database
-      console.log('Service started.  Calling query to database')
+      //console.log('Service started.  Calling query to database')
       const result = await productModelInstance.addProduct(data)
       return result
     } catch (err) {
@@ -34,10 +34,19 @@ module.exports = class ProductService {
   async update(data) {
     try {
       //check for existing product
-      const checkResult = await productModelInstance.getProdByID(data.id)
+      //console.log(data.id)
+      const checkResult = await productModelInstance.getProdByID(Number(data.id))
+      //console.log(checkResult)
       if (checkResult) {
+        //create an object without the id
+        const newProduct = {
+          name: data.name,
+          description: data.description,
+          price: data.price,
+          picLocation: data.picLocation
+        }
         //update product
-        const result = await productModelInstance.updateProduct(data)
+        const result = await productModelInstance.updateProduct(newProduct, data.id)
         return result
       }
       return "Product doesn't exisit"

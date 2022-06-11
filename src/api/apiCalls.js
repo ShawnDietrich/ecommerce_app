@@ -25,11 +25,17 @@ export default class Services {
 
   updateProduct(data){
     try{
+      //console.log(data)
       const response = axios.put(baseUrl + '/products', data)
       return response.then((response) => response.data)
     }catch (err){
       throw err
     }
+  }
+
+  deleteProduct(data){
+    const response = axios.delete(baseUrl + '/products', {data: data})
+    return response.then((response) => response.data)
   }
 
 
@@ -46,7 +52,7 @@ export default class Services {
   }
 
   logout(sessionID) {
-    const response = axios.post(baseUrl + '/auth/logout', {sessionID})
+    const response = axios.delete(baseUrl + '/auth/logout', {data: {UserToken: sessionID}})
     return response.then((response) => response.data)
   }
 }

@@ -3,14 +3,14 @@ import { Container } from 'react-bootstrap'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
 import icon from '../../../images/bowl.png' //<a href="https://www.flaticon.com/free-icons/clay" title="clay icons">Clay icons created by Eucalyp - Flaticon</a>
-
+import ringIcon from '../../../images/wedding-rings.png' //<a href="https://www.flaticon.com/free-icons/wedding-rings" title="wedding rings icons">Wedding rings icons created by Freepik - Flaticon</a>
 const NavHeader = () => {
  
   return (
     <Navbar bg="dark" variant='dark' expand="lg" sticky='top'>
       <Container fluid> 
         <Navbar.Brand >
-            <img src={icon}
+            <img src={ringIcon}
             width="30"
             height="30"
             className='d-inline-block align-top'

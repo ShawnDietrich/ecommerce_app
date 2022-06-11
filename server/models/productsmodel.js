@@ -30,7 +30,8 @@ module.exports = class ProductModel {
       //setup query
       const query = 'SELECT * FROM products WHERE id = $1'
       const value = [id]
-      const response = db.query(query, value)
+      //console.log(id)
+      const response = await db.query(query, value)
       if (response) return response.rows[0]
     } catch (err) {
       console.log(err)
@@ -42,8 +43,8 @@ module.exports = class ProductModel {
   async addProduct(data) {
     try {
       //setup query
-      console.log('adding product to database')
-      console.log(data)
+      //console.log('adding product to database')
+      //console.log(data)
       const query = pgp.helpers.insert(data, null, table) + 'RETURNING *'
       //query database
       const result = await db.query(query)
@@ -56,14 +57,31 @@ module.exports = class ProductModel {
     }
   }
 
-  async updateProduct(data) {
+  async updateProduct(data, id) {
     try {
-      const query = pgp.helpers.update(data, null, table) + 'RETURNING *'
+      //console.log(data)
+      const query = pgp.helpers.update(data, null, table) + "WHERE id =" + id + ' RETURNING *'
+      //console.log(query)
       const result = await db.query(query)
+      //console.log(result)
       if (result) return result.rows[0]
       return null
     } catch (err) {
+      console.log(err)
       throw new Error(err)
     }
+  }
+
+  async deleteProduct(id) {
+    try {
+      const query = "DELETE FROM products WHERE id = $1"
+      const prodID = [id]
+      const result = await db.query(query, prodID)
+      return result.rows[0]
+    } catch (err) {
+      console.log(err)
+      throw new Error(err)
+    }
+
   }
 }

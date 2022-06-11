@@ -61,7 +61,9 @@ const Login = () => {
       setErrorMessage(true)
     }
   }
-  const handleLogOut = () => {
+  const handleLogOut = async () => {
+    const response = await authService.logout(sessionStorage.getItem("session"))
+    console.log(response)
     sessionStorage.setItem('session', '')
     window.location.reload()
   }

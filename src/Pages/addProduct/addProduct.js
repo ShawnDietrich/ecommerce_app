@@ -19,12 +19,14 @@ const AddProduct = (props) => {
 
   //format data for api
   const formatData = (e) => {
-    if(!update){}
+    
     dispatch(
       newProductLoad({
+        id: newProduct.id,
         name: e.target.form[0].value,
         description: e.target.form[1].value,
-        price: Number(e.target.value),
+        price: Number(document.getElementsByClassName("price")[0].value),
+        //price: e.target.value
       }),
     )
   }
@@ -37,19 +39,20 @@ const AddProduct = (props) => {
   //collect data and send to database / cloud storage
   const handleSubmit = async (e) => {
     const userToken = sessionStorage.getItem("session")
-    const response = {}
+    let response = {}
     if(!update){
        response = await ProdServInst.addProduct({ newProduct, UserToken: userToken })
     }else {
+      //console.log("updating")
        response = await ProdServInst.updateProduct({newProduct, userToken: userToken})
     }
-    
+    console.log(response)
     if (response.status) {
       dispatch(clearNewProduct())
     } else {
       sessionStorage.setItem("session", '')
-      document.location.reload()
     }
+    document.location.reload()
   }
 
   const handleSelect = (e) => {
@@ -64,6 +67,13 @@ const AddProduct = (props) => {
     document.getElementsByClassName('price')[0].value = selectedProd.price.slice(1,selectedProd.price.length)
     //set state flag
     setUpdate(true)
+  }
+
+  const handleDelete = async () => {
+    const response = await ProdServInst.deleteProduct({id: newProduct.id, UserToken: sessionStorage.getItem("session")})
+    //console.log(response)
+    dispatch(clearNewProduct())
+    document.location.reload()
   }
 
   return (
@@ -95,6 +105,14 @@ const AddProduct = (props) => {
             <FormControl className='price' aria-label="Product Price" />
             <InputGroup.Text>.00</InputGroup.Text>
           </InputGroup>
+          <Button 
+          variant= "danger"
+          onClick= {handleDelete}
+          className = "submitButton"
+          disabled= {!update}
+          >
+            Delete Product
+          </Button>
           <Button
             variant="primary"
             onClick={handleSubmit}

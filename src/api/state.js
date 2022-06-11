@@ -9,6 +9,7 @@ const userState = createSlice({
     products: [],
     cart: [],
     newProduct: {
+      id: 0,
       name: '',
       description: '',
       price: 0,
@@ -32,6 +33,7 @@ const userState = createSlice({
       state.cart = []
     },
     newProductLoad(state, action) {
+      state.newProduct.id = action.payload.id
       state.newProduct.name = action.payload.name
       state.newProduct.description = action.payload.description
       state.newProduct.price = action.payload.price
@@ -41,6 +43,7 @@ const userState = createSlice({
     },
     clearNewProduct(state, action){
       state.newProduct = {}
+      state.newProduct.picLocation = noImagePic
     }
   },
 })

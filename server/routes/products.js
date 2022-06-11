@@ -15,11 +15,13 @@ module.exports = (app) => {
   //post middleware
   const checkSession = ('/', async (req, res, next) => {
     const UserToken = req.body.UserToken
+    //console.log(req.body)
     try {
       //call database looking for session
       const response = await new UserModel().getSession(UserToken)
       if (response) {
         //session found continue to next endpoint
+        console.log("user ok")
         next()
       } else {
         resStatus = {status: false, message: "Access Denied"}
@@ -54,18 +56,17 @@ module.exports = (app) => {
     }
   })
 
-  /*remove product from database
-  router.delete('/:id', async (res, req, next) => {
+  //remove product from database
+  router.delete('/', checkSession, async (req, res, next) => {
     try {
-      const { id } = req.params
-      const response = 
-    
+      const id = req.body.id
+      const result = await new ProductModel().deleteProduct(id)   
       res.status(200).send('product Removed')
     } catch (err) {
       next(err)
     }
   })
-  */
+  
 
   //add product to database
   router.post('/', checkSession, async (req, res, next) => {
@@ -73,7 +74,8 @@ module.exports = (app) => {
       //checkSession middleware ensure user has permission
       //gather information about product
       //console.log("Recived product.  Calling service")
-      const { product } = req.body
+      const  product  = req.body.newProduct
+      product.id = Math.floor(Math.random()*10000) 
       //send product to database
       const response = await prodServiceInstance.add(product)
 
@@ -91,14 +93,20 @@ module.exports = (app) => {
   })
 
   //update product in database
-  router.put('/', async (req, res, next) => {
+  router.put('/',  async (req, res, next) => {
     try {
       //gather infor about product
       
-      const product = req.body
-      console.log(product)
+      const product = req.body.newProduct
+      //console.log(product)
       const response = await prodServiceInstance.update(product)
-      res.status(201).send(response)
+      if(response) {
+        resStatus = {status: true, Message: `Updated ${response.name}`}
+      res.status(201).send(resStatus)
+      }else {
+        resStatus = {status: false, message: "Update Product Failed"}
+      }
+      
     } catch (err) {
       next(err)
     }

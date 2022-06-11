@@ -3,6 +3,7 @@ const router = express.Router()
 const AuthService = require('../services/AuthService')
 const AuthServiceInstance = new AuthService()
 const bcrypt = require('bcryptjs')
+const UserModel = require('../models/user')
 
 module.exports = (app, passport) => {
   app.use('/auth', router)
@@ -55,12 +56,13 @@ module.exports = (app, passport) => {
   )
 
   //Logout endpoint
-  router.post('/logout', async (req, res) => {
+  router.delete('/logout', async (req, res) => {
     try{
-      const sessionID = req.body.sessionID
-      const response = await AuthServiceInstance.storeSession(sessionID)
+      //console.log(req.body)
+      const userToken = req.body.UserToken
+      const response = await new UserModel().logOutSession(userToken)
       if(response) {
-        res.status(201).send("Session Complete")
+        res.status(201).send("Logged Out")
       }
     }catch(err){
       res.status(403).send("Failed")
