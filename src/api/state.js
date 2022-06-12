@@ -20,10 +20,11 @@ const userState = createSlice({
     loadProducts(state, action) {
       state.products = action.payload
     },
-    loadCart(state, action) {
-        state.cart.push(action.payload)
+    addToCart(state, action) {
+      state.cart.push(action.payload)
+      sessionStorage.setItem('cartData', JSON.stringify(state.cart))
     },
-    initCart(state, action){
+    initCart(state, action) {
       state.cart = action.payload
     },
     removeItem(state, action) {
@@ -41,7 +42,7 @@ const userState = createSlice({
     addProductURL(state, action) {
       state.newProduct.picLocation = action.payload
     },
-    clearNewProduct(state, action){
+    clearNewProduct(state, action) {
       state.newProduct = {}
       state.newProduct.picLocation = noImagePic
     }
@@ -58,7 +59,7 @@ export const userStore = configureStore({
 //export actions
 export const {
   loadProducts,
-  loadCart,
+  addToCart,
   removeItem,
   clearCart,
   newProductLoad,

@@ -1,0 +1,9 @@
+.qtyOrder {
+    display: flex;
+    padding: 0px 5px;
+}
+
+.qty {
+    width: 4em;
+    margin: 0px 20px;
+}

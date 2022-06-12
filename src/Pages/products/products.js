@@ -1,11 +1,19 @@
 
 
+import { useEffect } from 'react'
 import { CardGroup, Row } from 'react-bootstrap'
 import Cards from '../Components/cards/cards'
 import './products.css'
 
 const Products = (props) => {
   const products = props.products
+  let value = []
+
+  useEffect(() => {
+    for (let i = 0; i <= 10; i++) {
+      value.push(i)   
+    }
+  }, [])
 
 
 
@@ -13,9 +21,11 @@ const Products = (props) => {
   const handleAddCart = (e) => {
     e.preventDefault()
     const id = Number(e.target.id)
+    const qty = Number(e.target.previousSibling.value)
     products.map(product => {
       if (product.id === id) {
-        props.onClick(product)
+        props.onClick({qty: qty, ...product})
+        e.target.previousSibling.value = ''
       }
       return null
     })
@@ -34,6 +44,7 @@ const Products = (props) => {
                 className={product.prodName}
                 key={index}
                 product={product}
+                quantity={value}
                 onClick={handleAddCart}
               />
             ))}

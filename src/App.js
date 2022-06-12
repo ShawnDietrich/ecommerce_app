@@ -7,7 +7,7 @@ import Products from './Pages/products/products'
 import Cart from './Pages/cart/cart'
 import { useDispatch, useSelector } from 'react-redux'
 import Services from './api/apiCalls'
-import { initCart, loadCart, loadProducts } from './api/state'
+import { initCart, addToCart, loadProducts } from './api/state'
 import AddProduct from './Pages/addProduct/addProduct'
 import Login from './Pages/login/login'
 
@@ -46,12 +46,16 @@ function App() {
   //loading the session storage from state
   useEffect(() => {
     if (cart.length > 0) {
-      sessionStorage.setItem('cartData', JSON.stringify(cart))
+
     }
   }, [cart])
 
-  const handleAddToCart = async (item) => {
-    dispatch(loadCart(item))
+  const handleAddToCart = (item) => {
+    //console.log(item)
+    const foundItem = cart.find(element => element.id === item.id)
+    if(!foundItem){
+       dispatch(addToCart(item))
+    }
   }
 
 

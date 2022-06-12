@@ -1,0 +1,44 @@
+h2 {
+    text-align: center;
+}
+
+.orderForm{
+    width: 50%;
+    margin: 1em auto;
+}
+
+.ctrlBtn {
+    margin: 1em 1em 1em 0em;
+}
+
+.items {
+    margin: 1em 0em
+}
+
+.card-img-Left {
+    border-radius: 10%;
+    margin-right: 5em;
+}
+
+.card {
+    margin: 0.5em;
+    
+}
+.cartCardBody {
+    display: flex;
+    align-items: center;
+}
+
+.items {
+   width: 50%;
+   margin: 1em auto;
+}
+
+.cardText {
+    width: 50%;
+    margin: 0;
+}
+
+.cardQty {
+    width: 60px;
+}
