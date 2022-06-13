@@ -7,11 +7,11 @@ const port = process.env.DBPORT
 
 //Define properites for database
 const pool = new Pool({
-  //user: user,
-  //host: host,
-  //database: database,
-  //password: password,
-  //port: port,
+  user: user,
+  host: host,
+  database: database,
+  password: password,
+  port: port,
   connectionString: process.env.DATABASE_URL,
   ssl: {
     rejectUnauthorized: false

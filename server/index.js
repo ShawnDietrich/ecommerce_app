@@ -5,7 +5,7 @@ const http = require('http')
 
 //get port from .env file
 require('dotenv').config();
-const PORT  = process.env.PORT
+const PORT  = process.env.PORT || 3001
 
 //setup server and call loaders to link routes
 async function startServer() {
