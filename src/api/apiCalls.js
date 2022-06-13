@@ -5,7 +5,7 @@ axios.defaults.headers.common = {
 }
 
 //const baseUrl = 'http://localhost:3001'
-const baseUrl = ''
+const baseUrl = 'api'
 
 export default class Services {
   getAllProducts() {
