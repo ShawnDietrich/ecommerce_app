@@ -12,7 +12,13 @@ const pool = new Pool({
   database: database,
   password: password,
   port: port,
+  connectionString: process.env.DATABASE_URL,
+  ssl: {
+    rejectUnauthorized: false
+  }
 })
+
+pool.connect()
 
 //export query
 module.exports = {
