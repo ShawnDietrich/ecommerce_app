@@ -20,7 +20,7 @@ const pool = new Pool({
 
 
 console.log(process.env.DATABASE_URL)
-
+pool.connect()
 //export query
 module.exports = {
   query: (text, params) => pool.query(text, params),
