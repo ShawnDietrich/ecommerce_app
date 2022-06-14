@@ -19,7 +19,7 @@ const pool = new Pool({
 })
 
 
-//pool.connect()
+console.log(process.env.DATABASE_URL)
 
 //export query
 module.exports = {
