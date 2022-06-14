@@ -1,7 +1,7 @@
 const express = require('express')
 const app = express()
 const http = require('http');
-const loaders = require('./server/loaders');
+const loaders = require('./server/Loaders');
 
 //get port from .env file
 require('dotenv').config();
