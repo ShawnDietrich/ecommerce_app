@@ -7,7 +7,7 @@
   "private": true,
   "scripts": {
     "start": "node index.js",
-    "build:ui": "cd Client/ && npm install && npm run build"
+    "build:ui": "rm -rf build && cd ./Client && npm run build --prod && cp -r ./Client/build ../"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.2",
