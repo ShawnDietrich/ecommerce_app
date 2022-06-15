@@ -16,6 +16,7 @@ module.exports = (app) => {
       saveUninitialized: false,
     }),
   )
+
   
   //setup middlewares
   app.use(cors())

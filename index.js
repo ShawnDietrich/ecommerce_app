@@ -11,7 +11,6 @@ const PORT  = process.env.PORT || 3001
 async function startServer() {
   //Call loaders
   loaders(app)
-  //console.log(require('dotenv').config())
   /**
    * Get port from environment and store in Express.
    */
@@ -30,6 +29,10 @@ async function startServer() {
   server.on('error', onError)
   server.on('listening', (onListening) => {
     console.log(`Listening on port ${port}`)
+  })
+
+  app.listen(PORT, () => {
+    console.log(`App is listening on port ${PORT}`)
   })
 
   /**
