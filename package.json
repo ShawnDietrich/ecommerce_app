@@ -1,14 +1,13 @@
 {
   "name": "server",
   "version": "0.1.0",
-  "engines": {"npm":"8.5.0"},
+  "engines": {
+    "node": "16.4.2"
+  },
   "private": true,
   "scripts": {
     "start": "node index.js",
-    "server": "nodemon index.js",
-    "client": "npm run start --prefix Client",
-    "dev": "concurrently \"npm run server\" \"npm run Client\"",
-    "heroku-postbuild": "NPM_PRODUCTION=false npm install --prefix Client && npm run build --prefix Client"
+    "build": "cd Client/ && npm install && npm run build"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.2",
