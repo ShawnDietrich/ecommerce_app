@@ -25,17 +25,13 @@ async function startServer() {
   /**
    * Listen on provided port, on all network interfaces.
    */
-  /*
+  
   server.listen(port)
   server.on('error', onError)
   server.on('listening', (onListening) => {
     console.log(`Listening on port ${port}`)
   })
-  */
-
-  app.listen(PORT, () => {
-    console.log(`App is listening on port ${PORT}`)
-  })
+  
 
   /**
    * Normalize a port into a number, string, or false.
