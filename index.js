@@ -17,6 +17,9 @@ async function startServer() {
   var port = normalizePort(PORT )
   app.set('port', port)
 
+  //Serve static client code
+  app.use(express.static('build')); // serve static files (css & js) from the 'public' directory
+
   /**
    * Create HTTP server.
    */

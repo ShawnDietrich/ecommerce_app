@@ -17,8 +17,7 @@ module.exports = (app) => {
     }),
   )
 
-  //Serve static client code
-  app.use(express.static('../../build')); // serve static files (css & js) from the 'public' directory
+  
   //setup middlewares
   app.use(cors())
   app.use(express.json())
