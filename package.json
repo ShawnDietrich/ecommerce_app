@@ -4,9 +4,11 @@
   "engines": {"npm":"8.5.0"},
   "private": true,
   "scripts": {
-    "start": "nodemon index.js",
-    "heroku-postbuild": "cd ./Client && npm install && npm run build",
-    "build:ui": "rm -rf build && cd ./Client && npm run build --prod && cp -r build ../"
+    "start": "node index.js",
+    "server": "nodemon index.js",
+    "client": "npm run start --prefix Client",
+    "dev": "concurrently \"npm run server\" \"npm run Client\"",
+    "heroku-postbuild": "NPM_PRODUCTION=false npm install --prefix Client && npm run build --prefix Client"
   },
   "dependencies": {
     "@reduxjs/toolkit": "^1.8.2",
