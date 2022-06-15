@@ -4,10 +4,11 @@
   "private": true,
   "scripts": {
     "start": "nodemon index.js",
-    "heroku-postbuild" : "cd ./Client && npm install && npm run build",
+    "heroku-postbuild": "cd ./Client && npm install && npm run build",
     "build:ui": "rm -rf build && cd ./Client && npm run build --prod && cp -r build ../"
   },
   "dependencies": {
+    "@reduxjs/toolkit": "^1.8.2",
     "bcryptjs": "^2.4.3",
     "cookie-parser": "~1.4.4",
     "cors": "^2.8.5",
@@ -21,7 +22,8 @@
     "nodemon": "^2.0.16",
     "passport": "^0.5.2",
     "passport-local": "^1.0.0",
-    "pg": "^8.7.3"
+    "pg": "^8.7.3",
+    "pg-promise": "^10.11.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.6"

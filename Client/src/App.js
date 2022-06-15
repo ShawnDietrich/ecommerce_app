@@ -1,5 +1,5 @@
 import './App.css'
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import NavHeader from './Pages/Components/nav/nav'
 import Header from './Pages/Components/header/header'

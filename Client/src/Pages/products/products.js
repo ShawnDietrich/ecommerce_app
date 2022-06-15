@@ -1,6 +1,6 @@
 
 
-import { useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { CardGroup, Row } from 'react-bootstrap'
 import Cards from '../Components/cards/cards'
 import './products.css'
