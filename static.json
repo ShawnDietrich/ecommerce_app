@@ -1,7 +1,7 @@
 {
-    "root": "Client/build/",
-    "clean_urls": false,
+    
+    "clean_urls": true,
     "routes": {
-      "/**": "Client/build/"
+      "/*": "Client/build/index.html"
     }
   }
