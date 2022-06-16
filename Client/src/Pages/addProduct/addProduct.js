@@ -81,7 +81,8 @@ const AddProduct = (props) => {
       <div className="productForm">
         <CloudinaryUploadWidget storePic={handleStorePic} />
         <DropdownButton id='dropdown-variants-primary' title='Select Product' className='selectButton' as={ButtonGroup} onSelect={handleSelect}>
-          {products.map((product, index) => (
+          {products.length > 0 && 
+          products.map((product, index) => (
             <Dropdown.Item key={index} eventKey={product.id}>{product.name}</Dropdown.Item>
           ))}
         </DropdownButton>
