@@ -19,7 +19,9 @@ async function startServer() {
 
   //Serve static client code
   app.use("/", express.static('Client/build')); // serve static files (css & js) from the 'build' directory
-
+  app.use("/products", express.static('Client/build'));
+  app.use("/checkout", express.static('Client/build'));
+  app.use("/login", express.static('Client/build'));
   /**
    * Create HTTP server.
    */
