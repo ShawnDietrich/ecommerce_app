@@ -18,7 +18,7 @@ async function startServer() {
   app.set('port', port)
 
   //Add a static path for each route
-  app.use("/", express.static('Client/build'));
+  app.use("/*", express.static('Client/build'));
   app.use("/products", express.static('Client/build'));
   app.use("/checkout", express.static('Client/build'));
   app.use("/login", express.static('Client/build'));
