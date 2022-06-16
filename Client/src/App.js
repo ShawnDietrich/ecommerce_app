@@ -65,7 +65,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route
-          path="/products"
+          path="/Products"
           element={<Products products={products} onClick={handleAddToCart} />}
         />
         <Route path="/checkout" element={<Cart />} />
