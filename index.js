@@ -2,7 +2,6 @@ const express = require('express')
 const app = express()
 const http = require('http');
 const loaders = require('./server/Loaders');
-const routes = require("routes")
 
 //get port from .env file
 require('dotenv').config();
@@ -19,22 +18,8 @@ async function startServer() {
   app.set('port', port)
 
   //Serve static client code
-  app.use('/**', express.static('build')); // serve static files (css & js) from the 'build' directory
- 
-  
-  // import all controllers
-  // import SessionController from './app/controllers/SessionController';
-  
-  const routes = new Router();
-  
-  // Add routes
-  // routes.get('/', SessionController.store);
-  // routes.post('/', SessionController.store);
-  // routes.put('/', SessionController.store);
-  // routes.delete('/', SessionController.store);
-  
-  module.exports = routes;
-  
+  app.use('/**', express.static('build')); // serve static files (css & js) from the 'public' directory
+
   /**
    * Create HTTP server.
    */
