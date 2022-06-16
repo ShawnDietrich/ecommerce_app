@@ -34,7 +34,7 @@ async function startServer() {
   // routes.delete('/', SessionController.store);
   
   module.exports = routes;
-  )
+  
   /**
    * Create HTTP server.
    */
