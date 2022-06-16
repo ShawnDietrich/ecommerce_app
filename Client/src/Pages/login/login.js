@@ -44,7 +44,7 @@ const Login = () => {
         password: password,
       })
       //check session id
-      if (response.session.length === length) {
+      if (response.session) {
         //show messages
         setMessage(true)
         setErrorMessage(false)
