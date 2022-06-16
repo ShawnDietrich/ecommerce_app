@@ -2,6 +2,6 @@
     "root": "Client/build/",
     "clean_urls": false,
     "routes": {
-      "/**": "Client/build/index.html"
+      "/**": "Client/build/"
     }
   }
