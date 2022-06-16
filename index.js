@@ -18,7 +18,7 @@ async function startServer() {
   app.set('port', port)
 
   //Serve static client code
-  app.use('/**', express.static('Client/build')); // serve static files (css & js) from the 'build' directory
+  app.use('/', express.static('Client/build')); // serve static files (css & js) from the 'build' directory
 
   /**
    * Create HTTP server.
