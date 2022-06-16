@@ -10,7 +10,7 @@ let resStatus = {status: false, message: ''}
 
 module.exports = (app) => {
   //map route to router
-  app.use('/products', router)
+  app.use('/inventory', router)
 
   //post middleware
   const checkSession = ('/', async (req, res, next) => {

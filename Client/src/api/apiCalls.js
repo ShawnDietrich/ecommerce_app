@@ -9,13 +9,13 @@ const baseUrl = 'https://made-to-order.herokuapp.com'
 
 export default class Services {
   getAllProducts() {
-    const response = axios.get(baseUrl + '/products')
+    const response = axios.get(baseUrl + '/inventory')
     return response.then((response) => response.data)
   }
 
   addProduct(data) {
     try {
-      const response = axios.post(baseUrl + '/products', data)
+      const response = axios.post(baseUrl + '/inventory', data)
       return response.then((response) => response.data)
     } catch (err) {
       
@@ -27,7 +27,7 @@ export default class Services {
   updateProduct(data){
     try{
       //console.log(data)
-      const response = axios.put(baseUrl + '/products', data)
+      const response = axios.put(baseUrl + '/inventory', data)
       return response.then((response) => response.data)
     }catch (err){
       throw err
@@ -35,7 +35,7 @@ export default class Services {
   }
 
   deleteProduct(data){
-    const response = axios.delete(baseUrl + '/products', {data: data})
+    const response = axios.delete(baseUrl + '/inventory', {data: data})
     return response.then((response) => response.data)
   }
 
