@@ -1,15 +1,15 @@
 self.__precacheManifest = [
   {
-    "revision": "f046cb9dd76113637480",
-    "url": "/static/css/main.8af09d78.chunk.css"
+    "revision": "e531a3ffcfe29ace788d",
+    "url": "/static/css/main.937c01d2.chunk.css"
   },
   {
-    "revision": "f046cb9dd76113637480",
-    "url": "/static/js/main.f046cb9d.chunk.js"
+    "revision": "e531a3ffcfe29ace788d",
+    "url": "/static/js/main.e531a3ff.chunk.js"
   },
   {
-    "revision": "fe14956224d6443875f1",
-    "url": "/static/js/1.fe149562.chunk.js"
+    "revision": "2982e6b07e933eb5afd2",
+    "url": "/static/js/1.2982e6b0.chunk.js"
   },
   {
     "revision": "229c360febb4351a89df",
@@ -28,7 +28,7 @@ self.__precacheManifest = [
     "url": "/static/media/bowl.caba6159.png"
   },
   {
-    "revision": "d94fc333e8df9e5828ff493407107a25",
+    "revision": "5587e9fdd68909b725abbe83ffc68d08",
     "url": "/index.html"
   }
 ];

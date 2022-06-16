@@ -2,7 +2,6 @@ import './App.css'
 import React, { useEffect } from 'react'
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom'
 import NavHeader from './Pages/Components/nav/nav'
-import Header from './Pages/Components/header/header'
 import Products from './Pages/products/products'
 import Cart from './Pages/cart/cart'
 import { useDispatch, useSelector } from 'react-redux'
@@ -10,6 +9,7 @@ import Services from './api/apiCalls'
 import { initCart, addToCart, loadProducts } from './api/state'
 import AddProduct from './Pages/addProduct/addProduct'
 import Login from './Pages/login/login'
+import Home from './Pages/Home/home'
 
 function App() {
   //setup reducer and state
@@ -63,7 +63,7 @@ function App() {
     <Router>
       <NavHeader />
       <Routes>
-        <Route path="/" element={<Header />} />
+        <Route path="/" element={<Home />} />
         <Route
           path="/products"
           element={<Products products={products} onClick={handleAddToCart} />}
