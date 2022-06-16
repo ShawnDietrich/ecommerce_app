@@ -17,8 +17,8 @@ async function startServer() {
   var port = normalizePort(PORT )
   app.set('port', port)
 
-  //Serve static client code
-  app.use("/", express.static('Client/build')); // serve static files (css & js) from the 'build' directory
+  //Add a static path for each route
+  app.use("/", express.static('Client/build'));
   app.use("/products", express.static('Client/build'));
   app.use("/checkout", express.static('Client/build'));
   app.use("/login", express.static('Client/build'));
