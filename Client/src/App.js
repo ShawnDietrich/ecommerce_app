@@ -31,7 +31,9 @@ function App() {
   useEffect(() => {
     async function fetchProducts() {
       const response = await ProdServInst.getAllProducts()
-      dispatch(loadProducts(response))
+      if(typeof response === 'object' ){
+        dispatch(loadProducts(response))
+      }
     }
     function loadCart() {
       const cartData = JSON.parse(sessionStorage.getItem('cartData'))
