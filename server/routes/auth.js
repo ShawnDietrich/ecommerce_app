@@ -36,7 +36,7 @@ module.exports = (app, passport) => {
           return new Promise(res => setTimeout(res, delay))
         }
 
-        await timeout(3000)
+        await timeout(2000)
 
         if(req.isAuthenticated()){
           const storedRes = await AuthServiceInstance.storeSession(req.sessionID)
