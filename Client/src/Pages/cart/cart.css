@@ -42,3 +42,7 @@ h2 {
 .cardQty {
     width: 60px;
 }
+
+.cardRemove {
+    margin: 0 10px
+}

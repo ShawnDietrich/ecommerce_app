@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "start": "node index.js",
+    "test": "nodemon index.js",
     "build:ui": "rm -rf build && cd ./Client && npm run build --prod && cp -r ./Client/build ../"
   },
   "dependencies": {

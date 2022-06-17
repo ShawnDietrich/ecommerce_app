@@ -1,26 +1,16 @@
 import './login.css'
 import Services from '../../api/apiCalls'
 import React, { useEffect, useState } from 'react'
-import bcrypt from 'bcryptjs'
-import { Alert, Button } from 'react-bootstrap'
+import { Alert } from 'react-bootstrap'
 import AddProduct from '../addProduct/addProduct'
 const authService = new Services()
-let logOutVis = 'hidden'
-const length = Number(process.env.REACT_APP_SESSION)
+
 
 const Login = () => {
   //login states
   const [showMessage, setMessage] = useState(false)
   const [errorMessage, setErrorMessage] = useState(false)
   const [loggedIn, setLoggedIn] = useState(false);
-
-  //show logout button on refresh if logged in
-  useEffect(() => {
-    let user = sessionStorage.getItem('userEmail')
-    if (user !== null) {
-      logOutVis = 'Visible'
-    }
-  })
 
   //Set logged in status
   useEffect(() => {

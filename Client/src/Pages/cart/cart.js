@@ -2,26 +2,34 @@ import { Button, FormControl, InputGroup, Card } from 'react-bootstrap'
 import React from 'react'
 import './cart.css'
 import { Form } from 'react-bootstrap'
+import { useDispatch } from 'react-redux'
+import { removeItem, updateCart } from '../../api/state'
+import trashCan from '../../images/delete.png'
 
 const Cart = (props) => {
   //load items from session storage
   const cart = JSON.parse(sessionStorage.getItem('cartData'))
-  let total = 0
+  const dispatch = useDispatch()
+
+  //clear cart
   const handleClear = () => {
     sessionStorage.setItem("cartData", JSON.stringify([]))
     window.location.reload()
   }
 
+  //user changes quantity
   const handleQtyChange = (e) => {
     //update quantity
-    //console.log(e)
-    const index = e.target.id
-    const newQty = e.target.value
-    console.log(cart[index].qty)
-    cart[index].qty = newQty
-    //cart.forEach(item => item.id === e.target.id ? console.log(item.id) : console.log("not found"))
-    //const index = cart.indexOf((item) => Number(item.id) === Number(e.target.id))
-    //console.log(index)
+    const index = cart.findIndex(item => item.id === Number(e.target.id))
+    const newQty = Number(e.target.value)
+    if(index >= 0){
+      dispatch(updateCart({qty: newQty, index: index}))
+    }else window.alert("Item Not Found")
+  }
+
+  const handleRemove = (e) => {
+    dispatch(removeItem({id: Number(e.target.id)}))
+
   }
 
   if (cart.length > 0) {
@@ -36,7 +44,8 @@ const Cart = (props) => {
           <Card.Img variant='Left' src={item.picLocation} width='50px' border-radius='10%' />
           <Card.Text className='cardText'>{item.name}</Card.Text>
           <Card.Text className='cardText'>{item.price}</Card.Text>
-          <Form.Control className='cardQty' type='Qty' placeholder={item.qty} onChange={handleQtyChange} id={index}/>
+          <img src={trashCan} className='cardRemove' type='Button' width={"30px"} onClick={handleRemove} id={item.id} alt='Remove Item'></img>
+          <Form.Control className='cardQty' type='Qty' placeholder={item.qty} onChange={handleQtyChange} id={item.id}/>
         </Card.Body>
       </div>
     ))

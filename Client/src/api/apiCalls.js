@@ -1,11 +1,15 @@
 import axios from 'axios'
-
+let baseUrl = ''
 axios.defaults.headers.common = {
   'Content-Type': 'application/json',
 }
 
-//const baseUrl = 'http://localhost:3001'
-const baseUrl = 'https://made-to-order.herokuapp.com'
+if (process.env.NODE_ENV === 'production'){
+   baseUrl = 'https://made-to-order.herokuapp.com'
+
+}else {
+   baseUrl = 'http://localhost:3001'
+}
 
 export default class Services {
   getAllProducts() {

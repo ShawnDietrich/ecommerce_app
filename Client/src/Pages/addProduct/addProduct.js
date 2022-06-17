@@ -4,7 +4,7 @@ import './addProduct.css'
 import Services from '../../api/apiCalls'
 import CloudinaryUploadWidget from './cloudinary'
 import { useDispatch, useSelector } from 'react-redux'
-import { addProductURL, clearNewProduct, newProductLoad, updateProduct } from '../../api/state'
+import { addProductURL, clearNewProduct, newProductLoad } from '../../api/state'
 import { useState } from 'react'
 
 
@@ -70,7 +70,7 @@ const AddProduct = (props) => {
   }
 
   const handleDelete = async () => {
-    const response = await ProdServInst.deleteProduct({id: newProduct.id, UserToken: sessionStorage.getItem("session")})
+    await ProdServInst.deleteProduct({id: newProduct.id, UserToken: sessionStorage.getItem("session")})
     //console.log(response)
     dispatch(clearNewProduct())
     document.location.reload()

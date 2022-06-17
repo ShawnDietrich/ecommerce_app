@@ -22,13 +22,18 @@ const userState = createSlice({
     },
     addToCart(state, action) {
       state.cart.push(action.payload)
-      sessionStorage.setItem('cartData', JSON.stringify(state.cart))
+      updateCartSession(state.cart)
+    },
+    updateCart(state, action){
+      state.cart[action.payload.index].qty = action.payload.qty
+      updateCartSession(state.cart)
     },
     initCart(state, action) {
       state.cart = action.payload
     },
     removeItem(state, action) {
-      state.cart.filter((item) => item.id !== action.payload.id)
+      state.cart = state.cart.filter(item => item.id !== action.payload.id)
+      updateCartSession(state.cart)
     },
     clearCart(state, action) {
       state.cart = []
@@ -49,6 +54,10 @@ const userState = createSlice({
   },
 })
 
+const updateCartSession = (data) => {
+  sessionStorage.setItem('cartData', JSON.stringify(data))
+}
+
 //Create the store
 export const userStore = configureStore({
   reducer: {
@@ -60,6 +69,7 @@ export const userStore = configureStore({
 export const {
   loadProducts,
   addToCart,
+  updateCart,
   removeItem,
   clearCart,
   newProductLoad,

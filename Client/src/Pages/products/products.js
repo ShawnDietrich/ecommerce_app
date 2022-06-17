@@ -38,7 +38,7 @@ const Products = (props) => {
     <>
       <div className="products">
         <CardGroup>
-          <Row xs={10} md={10} className="g-4">
+          <Row xs={1} md={2} lg={3} xl={4} className="g-4">
             {products.map((product, index) => (
               <Cards
                 className={product.prodName}
