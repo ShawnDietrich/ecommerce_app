@@ -1,0 +1,23 @@
+.footerBackground {
+    background-color: rgb(207, 181, 148);
+}
+
+
+.footerBlock {
+    padding-top: 4em;
+    padding-bottom: 4em;
+    width: 50%;
+    margin: 0 auto;
+    font-family: 'Holtwood One SC', serif;   
+}
+.footerBlock img {
+    margin: 1em;
+    
+}
+
+.socialLinks {
+    display: inline-flex;
+    justify-content: center;
+    width: 50%;
+
+}

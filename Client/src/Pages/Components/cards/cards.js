@@ -15,8 +15,8 @@ const Cards = (props) => {
 
   return (
 
-    <Col xl={3}>
-      <Card border="dark" style={{ width: '18rem' }}>
+    <Col md={{span:1, offset: 3}}>
+      <Card border="dark" style={{ width: '19rem' }}>
         <Card.Img variant="top" src={picLocation} />
         <Card.Body>
           <Card.Title>{name}</Card.Title>

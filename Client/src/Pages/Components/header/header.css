@@ -1,7 +1,23 @@
-
+@import url('https://fonts.googleapis.com/css2?family=Grand+Hotel&family=Holtwood+One+SC&display=swap');
 
 .headerTitle {
     text-align: center;
     background-color:darkgray;
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-image: url('../../../images/woodFloorBackground.jpg');
+    background-size:cover;
+    background-position: center;
+    padding-bottom: 10em;
+}
+
+.headerTitle h1 {
+    color: rgb(108, 141, 108);
+    font-size: 60pt;
+    font-weight: 400;
+    font-family: 'Holtwood One SC', serif;
+    padding-top: 3em;
+}
+
+.headerTitle h2 {
+    padding-top: 3em;
+    font-family: 'Holtwood One SC', serif;
 }
