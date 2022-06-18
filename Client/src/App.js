@@ -10,7 +10,6 @@ import { initCart, addToCart, loadProducts } from './api/state'
 import AddProduct from './Pages/addProduct/addProduct'
 import Login from './Pages/login/login'
 import Home from './Pages/Home/home'
-import Footer from './Pages/Home/footer/footer'
 
 function App() {
   //setup reducer and state

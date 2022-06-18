@@ -88,7 +88,7 @@ const AddProduct = (props) => {
         </DropdownButton>
         <Form onChange={formatData}>
           <Form.Group className="mb-3" controlId="formBasicText">
-            <Form.Label>Product Title</Form.Label>
+            <Form.Label >Product Title</Form.Label>
             <Form.Control className='name' type="name" placeholder="Name of Item" />
           </Form.Group>
 

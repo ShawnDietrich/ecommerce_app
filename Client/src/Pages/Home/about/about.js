@@ -9,23 +9,23 @@ import CardGroup from 'react-bootstrap/CardGroup'
 const About = () => {
     return (
         <div className="aboutComponent">
-            <img height='700px' width='100%' src={headerImg} />
+            <img height='700px' width='100%' src={headerImg} alt='wood turning' />
             <CardGroup className="cardGroup">
-                <Card style={{ width: '30rem' }}>
+                <Card border="secondary" style={{ width: '30rem' }}>
                     <Card.Img variant='top' src={turningImg} style={{height: '50em'}}/>
                     <Card.Body>
                         <Card.Title>Turning Services</Card.Title>
                         <Card.Text>Full size wood lathe, capible of turning piecs up to 30" long and 8" diameter</Card.Text>
                     </Card.Body>
                 </Card>
-                <Card style={{ width: '30rem' }}>
+                <Card border="secondary" style={{ width: '30rem' }}>
                     <Card.Img variant='top' src={gobbletImg} style={{height: '50em'}}/>
                     <Card.Body>
                         <Card.Title>Custom Projects</Card.Title>
-                        <Card.Text>No job is too small or too big for this artist</Card.Text>
+                        <Card.Text>Projects designed by you, for you</Card.Text>
                     </Card.Body>
                 </Card>
-                <Card style={{ width: '30rem' }}>
+                <Card border="secondary" style={{ width: '30rem' }}>
                     <Card.Img variant='top' src={woodSelection} style={{height: '50em'}} />
                     <Card.Body>
                         <Card.Title>Exotic Wood Selection</Card.Title>

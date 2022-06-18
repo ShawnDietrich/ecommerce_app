@@ -1,10 +1,31 @@
+.cartObjects {
+    margin-top: 5em;
+    min-width: 880px;
+    max-width: 100em;
+    margin: 0 auto;
+}
+
+.noProducts {
+    background-image: url(../../images/woodFloorBackground.jpg);
+    background-position: center;
+    background-size: cover;
+    padding-bottom: 50rem;
+}
+.noProducts h1 {
+    padding-top: 5em;
+    font-family: 'Holtwood One SC', serif;  
+    text-align: center;
+    font-size: 50pt;
+}
+
 h2 {
     text-align: center;
 }
 
 .orderForm{
-    width: 50%;
+    width: 50em;
     margin: 1em auto;
+    min-width: 400px;
 }
 
 .ctrlBtn {
@@ -45,4 +66,11 @@ h2 {
 
 .cardRemove {
     margin: 0 10px
+}
+
+.totalTitle {
+    margin-bottom: 0;
+}
+.totalPrice {
+ margin-left: auto;   
 }

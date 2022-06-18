@@ -11,7 +11,7 @@ const Products = (props) => {
 
   useEffect(() => {
     for (let i = 0; i <= 10; i++) {
-      value.push(i)   
+      value.push(i)
     }
   }, [])
 
@@ -24,7 +24,7 @@ const Products = (props) => {
     const qty = Number(e.target.previousSibling.value)
     products.map(product => {
       if (product.id === id) {
-        props.onClick({qty: qty, ...product})
+        props.onClick({ qty: qty, ...product })
         e.target.previousSibling.value = ''
       }
       return null
@@ -35,10 +35,10 @@ const Products = (props) => {
   //Use ( ) instead of { } for the arrow function in the .map
   //This will render the Cards component using { } will not render Cards
   return (
-    <>
+    <div className='background'>
       <div className="products">
         <CardGroup>
-          <Row  className="justify-content-md-center">
+          <Row className='justify-content-center'>
             {products.map((product, index) => (
               <Cards
                 className={product.prodName}
@@ -51,7 +51,7 @@ const Products = (props) => {
           </Row>
         </CardGroup>
       </div>
-    </>
+    </div>
   )
 }
 

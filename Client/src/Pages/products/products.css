@@ -2,6 +2,14 @@
 
 .products {
     width: 90%;
-    margin: 2em auto;
+    margin: 0em auto;
     text-align: center;
+   
+}
+
+.background {
+    background-image: url('../../images/HorztWoodBackground.jpg');
+    background-position: center;
+    background-size: contain;
+    background-attachment: fixed;
 }

@@ -15,23 +15,24 @@ const Cards = (props) => {
 
   return (
 
-    <Col md={{span:1, offset: 3}}>
-      <Card border="dark" style={{ width: '19rem' }}>
+    <Col >
+      <Card border="dark" style={{ width: '20rem', margin: '1em auto', height: '630px' }}>
         <Card.Img variant="top" src={picLocation} />
         <Card.Body>
           <Card.Title>{name}</Card.Title>
           <Card.Text>{description} </Card.Text>
           <Card.Text className='cardPrice'>{`${price}`}</Card.Text>
-          <div className='qtyOrder'>
-            <Form.Control className='qty' onChange={qtyUpdate} type='quantity' placeholder='Qty' />
-            <Button className='orderBtn' variant="outline-dark"
-              onClick={props.onClick} id={id}
-              qty={qty}
-              disabled={btnDisable}>
-              Add To Order
-            </Button>
-          </div>
         </Card.Body>
+        <div className='qtyOrder'>
+          <Form.Control className='qty' onChange={qtyUpdate} type='quantity' placeholder='Qty' />
+          <Button className='orderBtn' variant="outline-dark"
+            onClick={props.onClick} id={id}
+            qty={qty}
+            disabled={btnDisable}>
+            Add To Order
+          </Button>
+        </div>
+
       </Card>
     </Col>
 

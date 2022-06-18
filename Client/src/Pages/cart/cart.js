@@ -32,13 +32,18 @@ const Cart = (props) => {
 
   }
 
+  const handleTotal = () => {
+   let total = 0
+   cart.map(item => 
+    total += Number(item.price.slice(1))
+   )
+   const strTotal = '$' + total.toString() 
+   return strTotal
+  }
+
   if (cart.length > 0) {
     //present cart items in a list
     const listCart = cart.map((item, index) => (
-      //<li key={index}>
-      // <img className='thumbNail' src={item.picLocation}/> 
-      //  {item.name} {item.price}
-      //</li>
       <div className='card' key={index}>
         <Card.Body className='cartCardBody' key={index}>
           <Card.Img variant='Left' src={item.picLocation} width='50px' border-radius='10%' />
@@ -55,8 +60,14 @@ const Cart = (props) => {
     return (
       <>
         <div className="cartObjects">
-          <h2>Cart Contents</h2>
+          
           <Card className="items">{listCart}</Card>
+          <Card className='items'>
+            <Card.Body className='cartCardBody'>
+              <Card.Title className='totalTitle'>Total: </Card.Title>
+              <Card.Text className='totalPrice'>{handleTotal()}</Card.Text>
+            </Card.Body>
+          </Card>
         </div>
         <div className='orderForm'>
           <Form>
@@ -68,6 +79,11 @@ const Cart = (props) => {
             <Form.Group className="mb-3" controlId="formBasicAddress">
               <Form.Label>Address</Form.Label>
               <Form.Control type="address" placeholder="" />
+            </Form.Group>
+
+            <Form.Group className="mb-3" controlId="formBasicAddress">
+              <Form.Label>Address 2</Form.Label>
+              <Form.Control type="address2" placeholder="" />
             </Form.Group>
 
             <Form.Group className="mb-3" controlId="formBasicCity">
@@ -106,9 +122,9 @@ const Cart = (props) => {
     )
   } else {
     return (
-      <>
+      <div className='noProducts'>
         <h1>No Products Added</h1>
-      </>
+      </div>
     )
   }
 }
