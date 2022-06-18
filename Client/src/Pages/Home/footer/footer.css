@@ -4,8 +4,8 @@
 
 
 .footerBlock {
-    padding-top: 4em;
-    padding-bottom: 4em;
+    padding-top: 2em;
+    padding-bottom: 2em;
     width: 50%;
     margin: 0 auto;
     font-family: 'Holtwood One SC', serif;   
@@ -16,8 +16,8 @@
 }
 
 .socialLinks {
-    display: inline-flex;
+    display: flex;
     justify-content: center;
-    width: 50%;
+
 
 }

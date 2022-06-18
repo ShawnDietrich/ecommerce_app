@@ -2,14 +2,16 @@ import React from 'react'
 import { Container } from 'react-bootstrap'
 import Navbar from 'react-bootstrap/Navbar'
 import Nav from 'react-bootstrap/Nav'
-import ringIcon from '../../../images/wedding-rings.png' //<a href="https://www.flaticon.com/free-icons/wedding-rings" title="wedding rings icons">Wedding rings icons created by Freepik - Flaticon</a>
+//import ringIcon from '../../../images/wedding-rings.png' //<a href="https://www.flaticon.com/free-icons/wedding-rings" title="wedding rings icons">Wedding rings icons created by Freepik - Flaticon</a>
+import logs from '../../../images/logs.png'
+
 const NavHeader = () => {
  
   return (
     <Navbar bg="dark" variant='dark' expand="lg" sticky='top'>
       <Container fluid> 
         <Navbar.Brand >
-            <img src={ringIcon}
+            <img src={logs}
             width="30"
             height="30"
             className='d-inline-block align-top'

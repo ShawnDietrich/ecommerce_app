@@ -1,23 +1,23 @@
 self.__precacheManifest = [
   {
-    "revision": "a4a26c14753cff0a1506",
-    "url": "/static/css/main.0e17e2de.chunk.css"
+    "revision": "acfab08e287990899afc",
+    "url": "/static/css/main.7f530755.chunk.css"
   },
   {
-    "revision": "a4a26c14753cff0a1506",
-    "url": "/static/js/main.a4a26c14.chunk.js"
+    "revision": "acfab08e287990899afc",
+    "url": "/static/js/main.acfab08e.chunk.js"
   },
   {
-    "revision": "2afdfde298724d1ba7b9",
-    "url": "/static/js/1.2afdfde2.chunk.js"
+    "revision": "ba37ab630fe6404d0b42",
+    "url": "/static/js/1.ba37ab63.chunk.js"
   },
   {
     "revision": "229c360febb4351a89df",
     "url": "/static/js/runtime~main.229c360f.js"
   },
   {
-    "revision": "2daee2c9fa8102d0583df3104993e90d",
-    "url": "/static/media/wedding-rings.2daee2c9.png"
+    "revision": "60614879b4b02fa0a593f66d3b958f1a",
+    "url": "/static/media/logs.60614879.png"
   },
   {
     "revision": "e10f42e032397d302277b9d33edfff44",
@@ -56,7 +56,7 @@ self.__precacheManifest = [
     "url": "/static/media/woodFloorBackground.9708ab59.jpg"
   },
   {
-    "revision": "c86c366f438815bb77a6354b5ef3460c",
+    "revision": "2e55410f52d2ed3c7ca41c7f0d2de4c2",
     "url": "/index.html"
   }
 ];
