@@ -24,6 +24,7 @@ const Cart = (props) => {
     const newQty = Number(e.target.value)
     if(index >= 0){
       dispatch(updateCart({qty: newQty, index: index}))
+      handleTotal()
     }else window.alert("Item Not Found")
   }
 
