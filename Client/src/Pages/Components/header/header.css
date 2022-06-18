@@ -9,12 +9,20 @@
     padding-bottom: 10em;
 }
 
+
 .headerTitle h1 {
     color: rgb(108, 141, 108);
-    font-size: 60pt;
+    font-size: 3rem;
     font-weight: 400;
     font-family: 'Holtwood One SC', serif;
     padding-top: 3em;
+}
+
+@media (min-width: 700px) {
+    .headerTitle h1{
+        font-size: 60pt;
+    }
+    
 }
 
 .headerTitle h2 {

@@ -18,6 +18,12 @@
     font-size: 50pt;
 }
 
+@media (max-width: 700px){
+    .noProducts h1 {
+        font-size: 3rem;
+    }
+}
+
 h2 {
     text-align: center;
 }

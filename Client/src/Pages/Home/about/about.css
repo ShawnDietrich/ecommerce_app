@@ -3,4 +3,5 @@
 .cardGroup {
     width: 90%;
     margin: 1em auto;
+    justify-content: center;
 }
