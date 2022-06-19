@@ -5,7 +5,7 @@ var router = express.Router()
 const productService = require('../services/productsservice')
 const prodServiceInstance = new productService()
 //build response object
-let resStatus = {status: false, message: ''}
+let resStatus = { status: false, message: '' }
 
 
 module.exports = (app) => {
@@ -24,7 +24,7 @@ module.exports = (app) => {
         console.log("user ok")
         next()
       } else {
-        resStatus = {status: false, message: "Access Denied"}
+        resStatus = { status: false, message: "Access Denied" }
         res.status(203).send(resStatus)
       }
     } catch (err) {
@@ -34,14 +34,28 @@ module.exports = (app) => {
 
   const checkProdID = ('/', async (req, res, next) => {
     const id = req.body.id
-    try{
+    try {
       const response = await new ProductModel().getProdByID(id)
-      if(response){
+      if (response) {
         next()
       }
-    }catch(err) {
+    } catch (err) {
       throw new Error(err)
     }
+  })
+
+  router.get('/getID', async (req, res, next) => {
+    const { id } = req.query
+    let status = { query: 'failed', status: 0 }
+
+    const response = await new ProductModel().getProdByID(id)
+    status.query = 'Complete'
+    if (response !== undefined) {
+      status.status = 1
+    }
+
+    res.status(200).send(status)
+
   })
 
   //Get all products from database
@@ -60,13 +74,13 @@ module.exports = (app) => {
   router.delete('/', checkSession, async (req, res, next) => {
     try {
       const id = req.body.id
-      const result = await new ProductModel().deleteProduct(id)   
+      const result = await new ProductModel().deleteProduct(id)
       res.status(200).send('product Removed')
     } catch (err) {
       next(err)
     }
   })
-  
+
 
   //add product to database
   router.post('/', checkSession, async (req, res, next) => {
@@ -74,16 +88,15 @@ module.exports = (app) => {
       //checkSession middleware ensure user has permission
       //gather information about product
       //console.log("Recived product.  Calling service")
-      const  product  = req.body.newProduct
-      product.id = Math.floor(Math.random()*10000) 
+      const product = req.body.newProduct
       //send product to database
       const response = await prodServiceInstance.add(product)
 
       if (response) {
-        resStatus = {status: true, message: `Added ${response.name}`}
+        resStatus = { status: true, message: `Added ${response.name}` }
         res.status(201).send(resStatus)
       } else {
-        resStatus = {status: false, message: "Add Product Failed"}
+        resStatus = { status: false, message: "Add Product Failed" }
         res.status(401).send(resStatus)
       }
 
@@ -93,20 +106,20 @@ module.exports = (app) => {
   })
 
   //update product in database
-  router.put('/',  async (req, res, next) => {
+  router.put('/', async (req, res, next) => {
     try {
       //gather infor about product
-      
+
       const product = req.body.newProduct
       //console.log(product)
       const response = await prodServiceInstance.update(product)
-      if(response) {
-        resStatus = {status: true, Message: `Updated ${response.name}`}
-      res.status(201).send(resStatus)
-      }else {
-        resStatus = {status: false, message: "Update Product Failed"}
+      if (response) {
+        resStatus = { status: true, Message: `Updated ${response.name}` }
+        res.status(201).send(resStatus)
+      } else {
+        resStatus = { status: false, message: "Update Product Failed" }
       }
-      
+
     } catch (err) {
       next(err)
     }

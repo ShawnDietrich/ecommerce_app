@@ -36,17 +36,22 @@ const Cart = (props) => {
   const handleTotal = () => {
    let total = 0
    cart.map(item => 
-    total += Number(item.price.slice(1))
+    total = total + (Number(item.price.slice(1)) * item.qty)
    )
    const strTotal = '$' + total.toString() 
    return strTotal
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault()
+    handleClear()
   }
 
   if (cart.length > 0) {
     //present cart items in a list
     const listCart = cart.map((item, index) => (
       <div className='card' key={index}>
-        <Card.Body className='cartCardBody' key={index}>
+        <Card.Body className='cartCardBody' key={index} >
           <Card.Img variant='Left' src={item.picLocation} width='50px' border-radius='10%' />
           <Card.Text className='cardText'>{item.name}</Card.Text>
           <Card.Text className='cardText'>{item.price}</Card.Text>
@@ -110,7 +115,7 @@ const Cart = (props) => {
               <FormControl as="textarea" aria-label="With textarea" />
             </InputGroup>
 
-            <Button className='ctrlBtn' variant="primary" type="submit">
+            <Button className='ctrlBtn' variant="primary" type="submit" onClick={handleSubmit}>
               Submit
             </Button>
 

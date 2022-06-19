@@ -1,8 +1,8 @@
 .cartObjects {
-    margin-top: 5em;
-    min-width: 880px;
-    max-width: 100em;
+
+    min-width: 350px;
     margin: 0 auto;
+    width: 50%;
 }
 
 .noProducts {
@@ -29,9 +29,9 @@ h2 {
 }
 
 .orderForm{
-    width: 50em;
+    width: 50%;
     margin: 1em auto;
-    min-width: 400px;
+    min-width: 350px;
 }
 
 .ctrlBtn {
@@ -44,7 +44,7 @@ h2 {
 
 .card-img-Left {
     border-radius: 10%;
-    margin-right: 5em;
+    margin-right: 2em;
 }
 
 .card {
@@ -57,7 +57,7 @@ h2 {
 }
 
 .items {
-   width: 50%;
+
    margin: 1em auto;
 }
 

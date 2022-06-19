@@ -22,6 +22,15 @@ module.exports = class ProductService {
   //add product 
   async add(data) {
     try {
+      let validID = false
+
+      //create random id then check if existing
+      //continue loop if id already exists
+      while (!validID) {
+        data.id = Math.floor(Math.random()*10000) 
+        let checkIDRes = await productModelInstance.getProdByID(data.id)
+        if(checkIDRes === undefined) validID = true
+      }
       //add product to database
       //console.log('Service started.  Calling query to database')
       const result = await productModelInstance.addProduct(data)

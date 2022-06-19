@@ -21,8 +21,8 @@ const Cards = (props) => {
         <Card.Body>
           <Card.Title>{name}</Card.Title>
           <Card.Text>{description} </Card.Text>
-          <Card.Text className='cardPrice'>{`${price}`}</Card.Text>
         </Card.Body>
+        <Card.Text className='cardPrice'>{`${price}`}</Card.Text>
         <div className='qtyOrder'>
           <Form.Control className='qty' onChange={qtyUpdate} type='quantity' placeholder='Qty' />
           <Button className='orderBtn' variant="outline-dark"
