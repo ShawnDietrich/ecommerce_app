@@ -16,17 +16,19 @@ const AddProduct = (props) => {
   const { products, newProduct } = useSelector((state) => state.userState)
   const dispatch = useDispatch()
   const [update, setUpdate] = useState(false)
+  const [validateMsg, setValidateMsg] = useState(false)
+
+
 
   //format data for api
   const formatData = (e) => {
-    
+    //add to state as form is filled out
     dispatch(
       newProductLoad({
         id: newProduct.id,
         name: e.target.form[0].value,
         description: e.target.form[1].value,
         price: Number(document.getElementsByClassName("price")[0].value),
-        //price: e.target.value
       }),
     )
   }
@@ -40,11 +42,16 @@ const AddProduct = (props) => {
   const handleSubmit = async (e) => {
     const userToken = sessionStorage.getItem("session")
     let response = {}
-    if(!update){
-       response = await ProdServInst.addProduct({ newProduct, UserToken: userToken })
-    }else {
+    
+    //validate inputs
+    
+    if(!checkValid()) return
+
+    if (!update) {
+      response = await ProdServInst.addProduct({ newProduct, UserToken: userToken })
+    } else {
       //console.log("updating")
-       response = await ProdServInst.updateProduct({newProduct, userToken: userToken})
+      response = await ProdServInst.updateProduct({ newProduct, userToken: userToken })
     }
     console.log(response)
     if (response.status) {
@@ -64,16 +71,26 @@ const AddProduct = (props) => {
     //populate the input form
     document.getElementsByClassName('name')[0].value = selectedProd.name
     document.getElementsByClassName('desc')[0].value = selectedProd.description
-    document.getElementsByClassName('price')[0].value = selectedProd.price.slice(1,selectedProd.price.length)
+    document.getElementsByClassName('price')[0].value = selectedProd.price.slice(1, selectedProd.price.length)
     //set state flag
     setUpdate(true)
   }
 
   const handleDelete = async () => {
-    await ProdServInst.deleteProduct({id: newProduct.id, UserToken: sessionStorage.getItem("session")})
+    await ProdServInst.deleteProduct({ id: newProduct.id, UserToken: sessionStorage.getItem("session") })
     //console.log(response)
     dispatch(clearNewProduct())
     document.location.reload()
+  }
+
+  const checkValid = () => {
+    setValidateMsg(true)
+    if(newProduct.title !== '' && newProduct.description !== '' && newProduct.price > 0 && typeof newProduct.price === 'number'){
+      setValidateMsg(false)
+      return true
+    }else {
+      return false
+    }
   }
 
   return (
@@ -81,36 +98,48 @@ const AddProduct = (props) => {
       <div className="productForm">
         <CloudinaryUploadWidget storePic={handleStorePic} />
         <DropdownButton id='dropdown-variants-primary' title='Select Product' className='selectButton' as={ButtonGroup} onSelect={handleSelect}>
-          {products.length > 0 && 
-          products.map((product, index) => (
-            <Dropdown.Item key={index} eventKey={product.id}>{product.name}</Dropdown.Item>
-          ))}
+          {products.length > 0 &&
+            products.map((product, index) => (
+              <Dropdown.Item key={index} eventKey={product.id}>{product.name}</Dropdown.Item>
+            ))}
         </DropdownButton>
-        <Form onChange={formatData}>
+        <Form onChange={formatData} validated={validateMsg}>
+
           <Form.Group className="mb-3" controlId="formBasicText">
-            <Form.Label >Product Title</Form.Label>
-            <Form.Control className='name' type="name" placeholder="Name of Item" />
+            <Form.Label >Product Title (max 25 characters)</Form.Label>
+            <InputGroup hasValidation>
+              <Form.Control className='name' type="name" placeholder="Name of Item" maxLength='25' required />
+              <Form.Control.Feedback type='invalid'>Give your product a title</Form.Control.Feedback>
+            </InputGroup>
           </Form.Group>
 
           <Form.Group className="mb-3" controlId="formBasicText">
-            <Form.Label>Product Description</Form.Label>
-            <Form.Control
-              className='desc'
-              type="description"
-              placeholder="Describe the Product"
-            />
+            <Form.Label>Product Description (max 60 characters)</Form.Label>
+            <InputGroup hasValidation>
+              <Form.Control
+                className='desc'
+                type="description"
+                placeholder="Describe the Product"
+                maxLength='60'
+                required
+              />
+              <Form.Control.Feedback type='invalid'>Give your product a description</Form.Control.Feedback>
+            </InputGroup>
+
           </Form.Group>
           <Form.Label>Item Price</Form.Label>
-          <InputGroup className="mb-3">
+          <InputGroup className="mb-3" hasValidation>
             <InputGroup.Text>$</InputGroup.Text>
-            <FormControl className='price' aria-label="Product Price" />
+            <FormControl className='price' type='number' aria-label="Product Price" required/>
             <InputGroup.Text>.00</InputGroup.Text>
+            <Form.Control.Feedback type='invalid'>Give your product a price</Form.Control.Feedback>
           </InputGroup>
-          <Button 
-          variant= "danger"
-          onClick= {handleDelete}
-          className = "submitButton"
-          disabled= {!update}
+          
+          <Button
+            variant="danger"
+            onClick={handleDelete}
+            className="submitButton"
+            disabled={!update}
           >
             Delete Product
           </Button>

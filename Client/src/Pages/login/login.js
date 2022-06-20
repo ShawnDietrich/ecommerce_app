@@ -11,6 +11,7 @@ const Login = () => {
   const [showMessage, setMessage] = useState(false)
   const [errorMessage, setErrorMessage] = useState(false)
   const [loggedIn, setLoggedIn] = useState(false);
+  const [loggingIn, setLoggingIn] = useState(false);
 
   //Set logged in status
   useEffect(() => {
@@ -28,6 +29,8 @@ const Login = () => {
     e.preventDefault();
     const password = e.target.form[1].value
     try {
+      //show message
+      setLoggingIn(true)
       //send login request
       const response = await authService.authUser({
         username: e.target.form[0].value,
@@ -45,6 +48,7 @@ const Login = () => {
         e.target.form[1].value = ''
         //set state
         setLoggedIn(true)
+        setLoggingIn(false)
       }
     } catch (err) {
       setMessage(false)
@@ -68,6 +72,9 @@ const Login = () => {
           onClose={() => setErrorMessage(false)}
           dismissible>
           Incorrect Login, Please Try Again
+        </Alert>
+        <Alert key={'primary'} variant={'primary'} show={loggingIn}>
+          Logging In Now Please Wait.......
         </Alert>
         <form className="formBlock">
           <h3>Sign In</h3>
@@ -111,7 +118,7 @@ const Login = () => {
           <Alert.Heading>Welcome</Alert.Heading>
           <p>Please Use The Form Below To Add or Update Products</p>
         </Alert>
-
+        
         <AddProduct />
         <div className='formBlock'>
         <button
