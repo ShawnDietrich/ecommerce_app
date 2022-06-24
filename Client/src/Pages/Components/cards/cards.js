@@ -13,6 +13,11 @@ const Cards = (props) => {
     setBtnDisable(false)
   }
 
+  const handleAddOrder = (e) => {
+    setBtnDisable(true)
+    props.onClick(e)
+  }
+
   return (
 
     <Col >
@@ -26,7 +31,7 @@ const Cards = (props) => {
         <div className='qtyOrder'>
           <Form.Control className='qty' onChange={qtyUpdate} type='quantity' placeholder='Qty' />
           <Button className='orderBtn' variant="outline-dark"
-            onClick={props.onClick} id={id}
+            onClick={handleAddOrder} id={id}
             qty={qty}
             disabled={btnDisable}>
             Add To Order

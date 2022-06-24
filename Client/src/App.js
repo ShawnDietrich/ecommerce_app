@@ -68,7 +68,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route
           path="/Products"
-          element={<Products products={products} onClick={handleAddToCart} />}
+          element={<Products products={products} cart={cart} onClick={handleAddToCart} />}
         />
         <Route path="/checkout" element={<Cart />} />
         <Route path="/addprod" element={<AddProduct />} />

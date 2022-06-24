@@ -1,12 +1,13 @@
 
 
 import React, { useEffect, useState } from 'react'
-import { CardGroup, Row, Alert } from 'react-bootstrap'
+import { CardGroup, Row, Alert, Offcanvas, Card, Button } from 'react-bootstrap'
 import Cards from '../Components/cards/cards'
 import './products.css'
 
 const Products = (props) => {
   const products = props.products
+  const cart = props.cart
   let value = []
   const [addOrder, setAddOrder] = useState(false)
 
@@ -40,16 +41,36 @@ const Products = (props) => {
       return null
     })
   }
-  //Add server call when loaded to populate the cards
+
+  const handleClose = () => setAddOrder(false)
+  const handleShow = () => setAddOrder(true)
 
   //Use ( ) instead of { } for the arrow function in the .map
   //This will render the Cards component using { } will not render Cards
   return (
     <div className='background'>
       <div className="products">
-        <Alert key={'success'} variant={'success'} show={addOrder}>
-          Product Has Been Added To Your Order
-        </Alert>
+
+        <Offcanvas show={addOrder} onHide={handleClose}>
+          <Offcanvas.Header closeButton>
+            <Offcanvas.Title>Order List</Offcanvas.Title>
+          </Offcanvas.Header>
+          <Offcanvas.Body>
+            <CardGroup>
+              <Row className='justify-content-center'>
+                {cart.map((item, index) => (
+                  <Card key={index}>
+                    <Card.Body className='orderBody'>
+                      <Card.Img variant='Left' src={item.picLocation} width='50px' border-radius='10%' />
+                      <Card.Text>{item.name}</Card.Text>
+                    </Card.Body>
+                  </Card>
+                ))}
+              </Row>
+            </CardGroup>
+          </Offcanvas.Body>
+        </Offcanvas>
+
         <CardGroup>
           <Row className='justify-content-center'>
             {products.map((product, index) => (
@@ -63,7 +84,9 @@ const Products = (props) => {
             ))}
           </Row>
         </CardGroup>
+         
       </div>
+      
     </div>
   )
 }

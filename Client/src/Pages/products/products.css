@@ -13,3 +13,8 @@
     background-size: contain;
     background-attachment: fixed;
 }
+
+.orderBody {
+    display: flex;
+    align-items: center;
+}
