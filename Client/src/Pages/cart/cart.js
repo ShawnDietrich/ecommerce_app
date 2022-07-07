@@ -1,5 +1,5 @@
 import { Button, FormControl, InputGroup, Card } from 'react-bootstrap'
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './cart.css'
 import { Form } from 'react-bootstrap'
 import { useDispatch } from 'react-redux'
@@ -8,8 +8,18 @@ import trashCan from '../../images/delete.png'
 
 const Cart = (props) => {
   //load items from session storage
-  const cart = JSON.parse(sessionStorage.getItem('cartData'))
+  //const cart = JSON.parse(sessionStorage.getItem('cartData'))
+  const [cart, setCart] = useState([])
   const dispatch = useDispatch()
+
+  //Set cart data on load
+  useEffect(() => {
+    try {
+      setCart(JSON.parse(sessionStorage.getItem('cartData')))
+    } catch (error) {
+      setCart(sessionStorage.setItem('cartData', JSON.stringify([])))
+    }
+  })
 
   //clear cart
   const handleClear = () => {
@@ -47,7 +57,7 @@ const Cart = (props) => {
     handleClear()
   }
 
-  if (cart.length > 0) {
+  if (cart !== null && cart.length > 0) {
     //present cart items in a list
     const listCart = cart.map((item, index) => (
       <div className='card' key={index}>

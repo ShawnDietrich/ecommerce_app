@@ -1,15 +1,15 @@
 self.__precacheManifest = [
   {
-    "revision": "0ba7bef18c3c9c01553a",
-    "url": "/static/css/main.2605a15c.chunk.css"
+    "revision": "b3e96f59824c438bddd8",
+    "url": "/static/css/main.b67e3b8e.chunk.css"
   },
   {
-    "revision": "0ba7bef18c3c9c01553a",
-    "url": "/static/js/main.0ba7bef1.chunk.js"
+    "revision": "b3e96f59824c438bddd8",
+    "url": "/static/js/main.b3e96f59.chunk.js"
   },
   {
-    "revision": "b73a891cb9974b8f25df",
-    "url": "/static/js/1.b73a891c.chunk.js"
+    "revision": "afc3b83e6e9151dd32b0",
+    "url": "/static/js/1.afc3b83e.chunk.js"
   },
   {
     "revision": "229c360febb4351a89df",
@@ -56,7 +56,7 @@ self.__precacheManifest = [
     "url": "/static/media/HorztWoodBackground.95ca7478.jpg"
   },
   {
-    "revision": "aedbcecbf536f218739e746a71d0d5a3",
+    "revision": "9a1889c69745393d496c0dbe5d363728",
     "url": "/index.html"
   }
 ];
