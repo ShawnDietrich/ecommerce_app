@@ -106,7 +106,7 @@ module.exports = (app) => {
   })
 
   //update product in database
-  router.put('/', async (req, res, next) => {
+  router.put('/', checkSession, async (req, res, next) => {
     try {
       //gather infor about product
 
