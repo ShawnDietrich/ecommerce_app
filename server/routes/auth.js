@@ -39,6 +39,7 @@ module.exports = (app, passport) => {
         await timeout(2000)
 
         if(req.isAuthenticated()){
+          console.log(req.session.id)
           const storedRes = await AuthServiceInstance.storeSession(req.sessionID)
           res.status(200).send({session: req.sessionID})
         }else {
@@ -59,6 +60,7 @@ module.exports = (app, passport) => {
   router.delete('/logout', async (req, res) => {
     try{
       //console.log(req.body)
+      console.log(req.session.id)
       const userToken = req.body.UserToken
       const response = await new UserModel().logOutSession(userToken)
       if(response) {

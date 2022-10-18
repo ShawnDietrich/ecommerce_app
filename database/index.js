@@ -12,10 +12,10 @@ const pool = new Pool({
   database: database,
   password: password,
   port: port,
-  connectionString: process.env.DATABASE_URL,
-  ssl: {
-    rejectUnauthorized: false
-  }
+  //connectionString: process.env.DATABASE_URL,
+  //ssl: {
+ //   rejectUnauthorized: false
+  //}
 })
 
 

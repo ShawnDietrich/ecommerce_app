@@ -9,13 +9,7 @@ const SESSION_SECRET = process.env.SESSION_SECRET
 module.exports = (app) => {
   //create session
   
-  app.use(
-    session({
-      secret: SESSION_SECRET,
-      resave: true,
-      saveUninitialized: false,
-    }),
-  )
+  
 
   
   //setup middlewares
@@ -25,6 +19,18 @@ module.exports = (app) => {
   app.set('trust proxy', 1)
   app.use(express.static(__dirname + '/loaders'));
   
+  app.use(
+    session({
+      secret: SESSION_SECRET,
+      resave: true,
+      saveUninitialized: false,
+      cookie: {
+        maxAge: 600000000,
+        secure: 'auto',
+        httpOnly: true,
+      }
+    }),
+  )
 
   return app
 }
