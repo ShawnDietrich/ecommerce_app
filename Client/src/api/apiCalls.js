@@ -25,7 +25,6 @@ export default class Services {
       
       throw err
     }
-
   }
 
   updateProduct(data){
@@ -53,6 +52,11 @@ export default class Services {
       }
     )
 
+    return response.then((response) => response.data)
+  }
+
+  checkLogStatus() {
+    const response = axios.get(baseUrl + '/auth/status')
     return response.then((response) => response.data)
   }
 

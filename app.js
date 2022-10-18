@@ -42,10 +42,11 @@ app.use(
 );
 
 //Express Routes
-app.use("/auth", require("./server/routes/auth"));
-app.use("/cart", require("./server/routes/cart"));
-app.use("/inventory", require("./server/routes/products"));
-app.use("/users", require("./server/routes/users"));
+app.use("/auth", require("./routes/auth"));
+app.use("/cart", require("./routes/cart"));
+app.use("/inventory", require("./routes/products"));
+app.use("/users", require("./routes/users"));
+app.use("/addProduct", require("./routes/addProduct"))
 
 //React routes
 app.use("/", express.static("Client/build"));

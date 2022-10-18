@@ -15,12 +15,15 @@ const Login = () => {
 
   //Set logged in status
   useEffect(() => {
+
+    /*
     let sessionID = sessionStorage.getItem('session')
     if (sessionID) {
       setLoggedIn(true)
     } else {
       setLoggedIn(false)
     }
+    */
 
   }, [])
 
@@ -118,17 +121,17 @@ const Login = () => {
           <Alert.Heading>Welcome</Alert.Heading>
           <p>Please Use The Form Below To Add or Update Products</p>
         </Alert>
-        
+
         <AddProduct />
         <div className='formBlock'>
-        <button
-          type="button"
-          id="btn"
-          className="btn btn-primary"
-          onClick={handleLogOut}
-        >
-          Log Out
-        </button>
+          <button
+            type="button"
+            id="btn"
+            className="btn btn-primary"
+            onClick={handleLogOut}
+          >
+            Log Out
+          </button>
         </div>
       </div>
     )

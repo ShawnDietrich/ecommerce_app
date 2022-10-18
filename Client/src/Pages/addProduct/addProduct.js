@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { DropdownButton, Button, FormControl, InputGroup, Form, Dropdown, ButtonGroup } from 'react-bootstrap'
 import './addProduct.css'
 import Services from '../../api/apiCalls'
@@ -6,6 +6,7 @@ import CloudinaryUploadWidget from './cloudinary'
 import { useDispatch, useSelector } from 'react-redux'
 import { addProductURL, clearNewProduct, newProductLoad } from '../../api/state'
 import { useState } from 'react'
+
 
 
 //create an instance of the product api class
@@ -17,7 +18,6 @@ const AddProduct = (props) => {
   const dispatch = useDispatch()
   const [update, setUpdate] = useState(false)
   const [validateMsg, setValidateMsg] = useState(false)
-
 
 
   //format data for api
