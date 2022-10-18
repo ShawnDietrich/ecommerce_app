@@ -38,13 +38,13 @@ module.exports = class AuthService {
       
       // If no user found, reject
       if (!user) {
-        throw createError(401, 'Incorrect username or password');
+        return null;
       }
 
       // Check for matching passwords
       const passwordCheck = await bcrypt.compare(password, user.password)    
       if (!passwordCheck) {
-        throw createError(401, 'Incorrect username or password');
+        return 'Incorrect username or password';
       }
 
       return user;

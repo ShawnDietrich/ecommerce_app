@@ -4,8 +4,8 @@ var router = express.Router()
 const CartService = require('../services/cartservice')
 const CartServiceInst = new CartService ()
 
-module.exports = (app) => {
-  app.use('/cart', router)
+
+  
 
   //get all items in cart
   router.get('/', async (req, res, next) => {
@@ -54,4 +54,5 @@ module.exports = (app) => {
       next(err)
     }
   })
-}
+
+  module.exports = router;

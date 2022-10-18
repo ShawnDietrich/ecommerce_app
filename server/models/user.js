@@ -42,7 +42,7 @@ module.exports = class UserModel {
     try {
       // format statement
       const query = 'SELECT * FROM users WHERE email = $1'
-      const values = [email] // <- not sure why the []
+      const values = [email]
       //query to find user by email
       const result = await db.query(query, values)
       if (result) {
