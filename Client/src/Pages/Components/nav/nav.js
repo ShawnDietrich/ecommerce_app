@@ -24,7 +24,7 @@ const NavHeader = () => {
             <Nav.Link href="/">Home</Nav.Link>
             <Nav.Link href="/products">Products</Nav.Link>
             <Nav.Link href='/checkout'>Order</Nav.Link>
-            <Nav.Link href="/login">Store Owner</Nav.Link>            
+            <Nav.Link href="/auth/login">Log In</Nav.Link>            
           </Nav>
         </Navbar.Collapse>
       </Container>

@@ -52,7 +52,7 @@ app.use("/addProduct", require("./routes/addProduct"))
 app.use("/", express.static("Client/build"));
 app.use("/products", express.static("Client/build"));
 app.use("/checkout", express.static("Client/build"));
-app.use("/login", express.static("Client/build"));
+//app.use("/login", express.static("Client/build"));
 app.use("/manifest.json", express.static("Client/build"));
 
 // catch 404 and forward to error handler

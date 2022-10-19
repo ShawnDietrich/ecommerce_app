@@ -1,65 +1,68 @@
-const express = require("express");
-const router = express.Router();
-const AuthService = require("../services/AuthService");
-const AuthServiceInstance = new AuthService();
-const bcrypt = require("bcryptjs");
-const UserModel = require("../models/user");
+var express = require('express');
+var router = express.Router();
+const bcrypt = require('bcryptjs')
+const dbInstance = require("../models/user")
+const UserInst = new dbInstance()
 
 
-
-// Registration Endpoint
-router.post("/register", async (req, res, next) => {
-  try {
-    const data = req.body;
-    bcrypt.hash(data.password, 12, async (err, hashPassword) => {
-      const response = await AuthServiceInstance.register({
-        email: data.username,
-        password: hashPassword,
-      });
-      res.status(200).send(response);
-    });
-  } catch (err) {
-    next(err);
+/* GET login page */
+router.get('/login', function (req, res, next) {
+  console.log("logging in")
+  if(req.session.loggedin) {
+    res.redirect(`/${req.session.userCred}`)
+  }else {
+    res.render('login', { loginFailed: false });
   }
+  
 });
 
-// Login Endpoint
-router.post("/login", async (req, res, next) => {
-  try {
-    const email = req.body.username;
-    const password = req.body.password;
-    //delay to prevent spamming
-    await TimeOut(1500);
-    if (email && password) {
-      const result = await AuthServiceInstance.login({ email, password });
+//Login User
+router.post('/Request', async function (req, res) {
+  //delay to prevent spamming
+  await TimeOut(2500)
+  const email = req.body.email
+  const password = req.body.password
+  //console.log(email)
+  if (email && password) {
+    try {
+      const result = await UserInst.findByEmail(email)
       if (result) {
-        req.session.loggedin = true;
-        //console.log(req.session.id)
-        res.status(200).redirect("/addProduct")
-      } else {
-        res.status(400).send("Incorrect Password");
-      }
-    } else {
-      console.log("Missing Email or Password")
-    }
-  } catch (err) {
-    console.log(err);
-    next(err);
-  }
-});
+        //User found set session data
+        const passwordCheck = await bcrypt.compare(password, result.password)
+        if (passwordCheck) {
+          console.log("Password Check Complete")
+          console.log(`user cred ${result.userCred}`)
+          req.session.loggedin = true
+          req.session.email = result.email
 
-//Logout endpoint
-router.delete("/logout", async (req, res) => {
-  try {
-    req.session.destroy();
-    res.status(201).send("Logged Out");
-  } catch (err) {
-    res.status(403).send("Failed");
+          res.status(200).redirect(`/addProduct`)
+        } else {
+          console.log('Incorrect Password')
+          res.status(400).render('login', { loginFailed: true })
+        }
+      } else {
+        console.log('email not found')
+        res.status(200)
+          .render('login', { loginFailed: true })
+      }
+    } catch (error) {
+      console.log(error)
+      res.sendStatus(500)
+    }
+
   }
-});
-module.exports = router;
+})
+
+router.post('/logout', function (req, res) {
+  req.session.destroy();
+  res.status(200).redirect('/')
+})
+
 
 //Time delay to prevent spamming
 const TimeOut = (delay = 500) => {
-  return new Promise((res) => setTimeout(res, delay));
-};
+  return new Promise(res => setTimeout(res, delay))
+}
+
+
+module.exports = router;

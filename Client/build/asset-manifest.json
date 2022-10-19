@@ -1,9 +1,9 @@
 {
-  "main.css": "/static/css/main.cb6a7ace.chunk.css",
-  "main.js": "/static/js/main.d47656c6.chunk.js",
-  "main.js.map": "/static/js/main.d47656c6.chunk.js.map",
-  "static/js/1.690bf9f8.chunk.js": "/static/js/1.690bf9f8.chunk.js",
-  "static/js/1.690bf9f8.chunk.js.map": "/static/js/1.690bf9f8.chunk.js.map",
+  "main.css": "/static/css/main.70578aef.chunk.css",
+  "main.js": "/static/js/main.004e9587.chunk.js",
+  "main.js.map": "/static/js/main.004e9587.chunk.js.map",
+  "static/js/1.624644d2.chunk.js": "/static/js/1.624644d2.chunk.js",
+  "static/js/1.624644d2.chunk.js.map": "/static/js/1.624644d2.chunk.js.map",
   "runtime~main.js": "/static/js/runtime~main.229c360f.js",
   "runtime~main.js.map": "/static/js/runtime~main.229c360f.js.map",
   "static/media/logs.png": "/static/media/logs.60614879.png",
@@ -16,8 +16,8 @@
   "static/media/instagram.png": "/static/media/instagram.4a8c2347.png",
   "static/media/products.css": "/static/media/HorztWoodBackground.95ca7478.jpg",
   "static/media/header.css": "/static/media/woodFloorBackground.9708ab59.jpg",
-  "static/css/main.cb6a7ace.chunk.css.map": "/static/css/main.cb6a7ace.chunk.css.map",
+  "static/css/main.70578aef.chunk.css.map": "/static/css/main.70578aef.chunk.css.map",
   "index.html": "/index.html",
-  "precache-manifest.c7cec0259e6b072ba979c7d025ba2393.js": "/precache-manifest.c7cec0259e6b072ba979c7d025ba2393.js",
+  "precache-manifest.0ba28ccc92dc023caea6fdf71b6fbfce.js": "/precache-manifest.0ba28ccc92dc023caea6fdf71b6fbfce.js",
   "service-worker.js": "/service-worker.js"
 }
