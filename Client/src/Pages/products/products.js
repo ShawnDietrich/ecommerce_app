@@ -61,7 +61,7 @@ const Products = (props) => {
                 {cart.map((item, index) => (
                   <Card key={index}>
                     <Card.Body className='orderBody'>
-                      <Card.Img variant='Left' src={item.picLocation} width='50px' border-radius='10%' />
+                      <Card.Img variant='top' src={item.picLocation} width='50px' border-radius='10%' />
                       <Card.Text>{item.name}</Card.Text>
                     </Card.Body>
                   </Card>

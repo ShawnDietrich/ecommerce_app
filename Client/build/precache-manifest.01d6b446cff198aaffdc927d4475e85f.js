@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "004e95877a87ef27a126",
+    "revision": "71c0bda9f5e4597e0b7a",
     "url": "/static/css/main.70578aef.chunk.css"
   },
   {
-    "revision": "004e95877a87ef27a126",
-    "url": "/static/js/main.004e9587.chunk.js"
+    "revision": "71c0bda9f5e4597e0b7a",
+    "url": "/static/js/main.71c0bda9.chunk.js"
   },
   {
     "revision": "624644d244b8770a3782",
@@ -32,8 +32,8 @@ self.__precacheManifest = [
     "url": "/static/media/woodTurningbk.49b6e67c.jpg"
   },
   {
-    "revision": "41d049682c4b6690a55a69db8259fb28",
-    "url": "/static/media/wood gobblet.41d04968.jpg"
+    "revision": "21e325a90ea9e105766767916857df90",
+    "url": "/static/media/wood gobblet.21e325a9.jpg"
   },
   {
     "revision": "af2f22a3903e88c663b382b961202495",
@@ -56,7 +56,7 @@ self.__precacheManifest = [
     "url": "/static/media/woodFloorBackground.9708ab59.jpg"
   },
   {
-    "revision": "c86981c930f9f31fc3dd2f644a83b410",
+    "revision": "c103fe672dabec3feae644f5366b03e9",
     "url": "/index.html"
   }
 ];

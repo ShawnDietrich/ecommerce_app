@@ -19,6 +19,16 @@ module.exports = class ProductService {
     }
   }
 
+  async getProduct(id) {
+    try{
+    const product = await productModelInstance.getProdByID(id)
+    return product
+    }catch (err) {
+      console.log(err)
+      return err
+    }
+  }
+
   //add product 
   async add(data) {
     try {

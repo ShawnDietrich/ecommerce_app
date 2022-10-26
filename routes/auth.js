@@ -9,7 +9,7 @@ const UserInst = new dbInstance()
 router.get('/login', function (req, res, next) {
   console.log("logging in")
   if(req.session.loggedin) {
-    res.redirect(`/${req.session.userCred}`)
+    res.redirect(`/addProduct`)
   }else {
     res.render('login', { loginFailed: false });
   }
