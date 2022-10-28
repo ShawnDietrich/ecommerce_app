@@ -5,8 +5,8 @@ axios.defaults.headers.common = {
 }
 
 if (process.env.NODE_ENV === 'production'){
-   //baseUrl = 'https://made-to-order.herokuapp.com'
-   baseUrl = 'http://localhost:3001'
+   baseUrl = 'https://ecommerce.made-to-order.ca'
+   //baseUrl = 'http://localhost:3001'
 
 }else {
    baseUrl = 'http://localhost:3001'
